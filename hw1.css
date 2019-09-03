@@ -1,0 +1,112 @@
+
+body {
+  background: url("https://hills.ccsf.edu/~wsawyer/cnit132/COLOURlovers.com-Dance_of_the_Spirits.png")
+    no-repeat
+    center
+    fixed;
+  background-size: cover;
+
+}
+
+/* Navbar */
+.header-logo {
+  font-size: 28px;
+  font-family: 'Satisfy', cursive;
+  padding: 5px;
+}
+
+.header-logo :hover {
+  color: #89FEAF !important;
+  transition: .7s color;
+  text-decoration: underline;
+}
+
+nav {
+  box-shadow: 3px 3px 3px #4F2D4B;
+  margin: 0px;
+  padding: 0px;
+}
+
+.navbar-nav a, li  {
+  color: #89FEAF !important;
+}
+
+.navbar-text {
+	color: #89FEAF !important;
+}
+
+.navbar-nav li :hover {
+  transition: .7s color;
+  color: red !important;
+}
+
+.class-title {
+  color: #89FEAF;
+  font-family: 'Satisfy', cursive;
+  font-size: 28px;
+  text-align: right;
+  padding: 5px;
+  margin: 0px;
+}
+/* End-Navbar */
+
+.container {
+
+  color: #89FEAF;
+  background: #4F2D4B;
+
+  border: 1px solid #AB9A89;
+  box-shadow: 5px 5px 5px #4F2D4B;
+}
+	
+.sectionstyle {
+	margin-bottom: 20px;
+	background-color: #33333A;
+	color: #EEF9F3;
+	border: 1px solid #AB9A89;
+	box-shadow: 3px 3px 5px 1px rgba(215, 174, 128, 0.3);
+}
+.sectionstyle2 {
+	margin-bottom: 1px;
+	background-color: #33333A;
+	color: #EEF9F3;
+	border: 1px solid #AB9A89;
+	box-shadow: 3px 3px 5px 6px rgba(115, 174, 128, 0.4);
+}
+
+.list-group-item-action li :hover {
+	background-color: blue !important;
+	color: red;
+}
+/* Footer */
+footer {
+  background: #291E40 !important;
+  color: #9AEDB5;
+
+}
+
+.footer {
+  background: #291E40 !important;
+  color: #9AEDB5;
+	text-align: center;
+}
+
+footer a {
+  color: #9AEDB5;
+  text-decoration: underline;
+  	text-align: center;
+}
+
+.foot-pic {
+  width: 120px;
+  height: 60px;
+  border: 0 none;
+}
+
+.red-text {
+  color: red !important;
+}
+
+.blue-text {
+  color: blue !important;
+}
