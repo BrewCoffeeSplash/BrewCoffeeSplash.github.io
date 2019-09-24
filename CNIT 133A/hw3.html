@@ -33,72 +33,17 @@
     <script src="https://use.fontawesome.com/187c6f48ba.js"></script>
     <!--For jquery instead of in doc -->
 
+    <!--switch to a .css file instead of <style>-->
+    <link rel="stylesheet" href="hw3.css" />
 
-    <style>
-      .bar {
-        fill: #71EEB8;
-      }
-
-      #chart rect {
-        fill: #4aaeea;
-      }
-
-      #chart text {
-        fill: white;
-        font: 10px sans-serif;
-        text-anchor: end;
-      }
-
-      .axis text {
-        font: 10px sans-serif;
-      }
-
-      .axis path,
-      .axis line {
-        fill: none;
-        stroke: #fff;
-        shape-rendering: crispEdges;
-      }
-
-      body {
-        background: #1a1a1a;
-        color: #eaeaea;
-        padding: 10px;
-      }
-    </style>
   </head>
 
-
-  <!-- <script>
-// Assign handlers immediately after making the request,
-// and remember the jqxhr object for this request
-var jqxhr = $.getJSON( "hw3data.json", function() {
-  console.log( "success" );
-})
-  .done(function() {
-    console.log( "second success" );
-  })
-  .fail(function() {
-    console.log( "error" );
-  })
-  .always(function() {
-    console.log( "complete" );
-  });
- 
-// Perform other work here ...
- 
-// Set another completion function for the request above
-jqxhr.complete(function() {
-  console.log( "second complete" );
-});
-</script> -->
-
 <body>
-  <div id="chart" class="container">
-
-
+  <div id="container" class="container">
+    <svg width="1000" height="500"></svg>
   </div>
 </body>
+
 <footer class="footer justify-content-between">
   <div class="row">
     <div class="col col-sm-offset-2">
@@ -119,20 +64,10 @@ jqxhr.complete(function() {
   </div>
 </footer>
 
+<!--Implement scripts at the bottom from now on-->
+<!--Necessary for using d3-->
 <script src="https://d3js.org/d3.v5.min.js"></script>
-<!-- <script>
-$.getJSON( "hw3data.json", function( data ) {
-  var items = [];
-  $.each( data, function( key, val ) {
-    items.push( "<li id='" + key + "'>" + val + "</li>" );
-  });
- 
-  $( "<ul/>", {
-    "class": "my-new-list",
-    html: items.join( "" )
-  }).appendTo( "body" );
-});
-</script> -->
+
 
 
 <svg width="1000" height="500"></svg>
@@ -140,47 +75,94 @@ $.getJSON( "hw3data.json", function( data ) {
 
 
 <script>
-const svg     = d3.select("svg"),
-      margin  = {top: 20, right: 20, bottom: 30, left: 50},
-      width   = +svg.attr("width")  - margin.left - margin.right,
-      height  = +svg.attr("height") - margin.top  - margin.bottom,
-      x       = d3.scaleBand().rangeRound([0, width]).padding(0.2),
-      y       = d3.scaleLinear().rangeRound([height, 0]),
-      g       = svg.append("g")
-                   .attr("transform", `translate(${margin.left},${margin.top})`);
 
-d3.json("https://github.com/BrewCoffeeSplash/BrewCoffeeSplash.github.io/blob/master/CNIT%20133A/hw3data.json").then( data => {
- // data = data.RECORDS;
-  //var rainbow = d3.scaleSequential(d3.interpolateRainbow).domain([0,d3.sum(data, d => 1)]);
-  
-  x.domain(data.map(d => d.term));
-  y.domain([0, d3.max(data, d => d.students)]);
+  const svg = d3.select("svg"),
+    margin = { top: 20, right: 20, bottom: 30, left: 50 },
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom,
+    x = d3
+      .scaleBand()
+      .rangeRound([0, width])
+      .padding(0.2),
+    y = d3.scaleLinear().rangeRound([height, 0]),
+    g = svg
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  g.append("g")
-      .attr("class", "axis axis-x")
-      .attr("transform", `translate(0,${height})`)
-      .call(d3.axisBottom(x));
+  // change to github link to ensure all files are now local    
+  d3
+    .json("https://codepen.io/BrewCoffeeSplash/pen/MWgLQvJ.html")
+    .then(data => {
+      // No key used in array
+      //data = data.Key;
 
-  g.append("g")
-      .attr("class", "axis axis-y")
-      .call(d3.axisLeft(y).ticks(10).tickSize(8));
-  
-  g.selectAll(".bar")
-    .data(data)
-    .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", d => x(d.genre))
-      .attr("y", d => y(d.count))
-      .attr("width", x.bandwidth())
-      .attr("height", d => height - y(d.count));
-      //.attr("fill", (d,i) => rainbow(i));
-})
-.catch(err => {
-  svg.append("text")         
+      x.domain(data.map(d => d.term));
+      y.domain([0, d3.max(data, d => d.students)]);
+
+      g
+        .append("g")
+        .attr("class", "axis axis-x")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x));
+
+      g
+        .append("g")
+        .attr("class", "axis axis-y")
+        .call(
+          d3
+            .axisLeft(y)
+            .ticks(10)
+            .tickSize(8)
+        );
+
+      g
+        .selectAll(".bar")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("class", "bar")
+        .attr("x", d => x(d.term))
+        .attr("y", d => y(d.students))
+        .attr("width", x.bandwidth())
+        .attr("height", d => height - y(d.students))
+        .on('mouseover', mouseover)
+        .on('mousemove', mousemove)
+        .on('mouseout', mouseout);
+
+      // tooltips
+      // CSS required to follow mouse
+      // Left or right side of mouse instead?
+      var div = d3.select('#container').append('div')
+        .attr('class', 'tooltip')
+        .style('display', 'none');
+      function mouseover() {
+        div.style('display', 'inline');
+      }
+      function mousemove() {
+        var d = d3.select(this).data()[0]
+        div
+          .html(d.term + '<hr/>' + d.students)
+          .style('left', (d3.event.pageX - 34) + 'px')
+          .style('top', (d3.event.pageY - 12) + 'px');
+      }
+      function mouseout() {
+        div.style('display', 'none');
+      }
+
+
+    })
+
+
+
+    //Catch cors errors, figure out ways of bypassing, switch to github later due to local
+    .catch(err => {
+      svg
+        .append("text")
         .attr("y", 20)
-        .attr("text-anchor", "left")  
-        .style("font-size", "20px") 
-        .style("font-weight", "bold")  
+        .attr("text-anchor", "left")
+        .style("font-size", "20px")
+        .style("font-weight", "bold")
         .text(`Couldn't open the data file: "${err}".`);
-});
+    });
+
 </script>
