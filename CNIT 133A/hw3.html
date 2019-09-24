@@ -118,7 +118,7 @@ jqxhr.complete(function() {
 </footer>
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script>
-$.getJSON( "https://github.com/BrewCoffeeSplash/BrewCoffeeSplash.github.io/blob/master/CNIT%20133A/hw3data.json", function( data ) {
+$.getJSON( "hw3data.json", function( data ) {
   var items = [];
   $.each( data, function( key, val ) {
     items.push( "<li id='" + key + "'>" + val + "</li>" );
@@ -133,7 +133,7 @@ $.getJSON( "https://github.com/BrewCoffeeSplash/BrewCoffeeSplash.github.io/blob/
 
 
 <script>
-  d3.json("https://github.com/BrewCoffeeSplash/BrewCoffeeSplash.github.io/blob/master/CNIT%20133A/hw3data.json", function(error, data){
+  d3.json("hw3data.json", function(error, data){
     data.forEach(function(d){
       d.Letter = d.Letter;
       d.Freq = +d.Freq;
