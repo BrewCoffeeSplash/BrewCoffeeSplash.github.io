@@ -150,7 +150,7 @@ const svg     = d3.select("svg"),
                    .attr("transform", `translate(${margin.left},${margin.top})`);
 
 d3.json("hw3data.json").then( data => {
-  data = data.RECORDS;
+ // data = data.RECORDS;
   //var rainbow = d3.scaleSequential(d3.interpolateRainbow).domain([0,d3.sum(data, d => 1)]);
   
   x.domain(data.map(d => d.genre));
