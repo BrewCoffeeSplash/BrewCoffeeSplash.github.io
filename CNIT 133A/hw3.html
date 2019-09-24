@@ -26,7 +26,6 @@
     <!--switch to a .css file instead of <style>-->
     <link rel="stylesheet" href="hw3.css">
     <!-- Implement scripts at the bottom from now on -->
-    <script src="https://d3js.org/d3.v5.min.js"></script>
 
 </head>
 
@@ -56,103 +55,105 @@
             </div>
         </div>
     </footer>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+        const svg = d3.select("svg"),
+            margin = {
+                top: 20,
+                right: 20,
+                bottom: 30,
+                left: 50
+            },
+            width = +svg.attr("width") - margin.left - margin.right,
+            height = +svg.attr("height") - margin.top - margin.bottom,
+            x = d3
+            .scaleBand()
+            .rangeRound([0, width])
+            .padding(0.2),
+            y = d3.scaleLinear().rangeRound([height, 0]),
+            g = svg
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // change to github link to ensure all files are now local    
+        d3
+            .json("hw3data.json")
+            .then(data => {
+                // No key used in array, single array, save for later
+                //data = data.Key;
+
+                x.domain(data.map(d => d.term));
+                y.domain([0, d3.max(data, d => d.students)]);
+
+                g
+                    .append("g")
+                    .attr("class", "axis axis-x")
+                    .attr("transform", `translate(0,${height})`)
+                    .call(d3.axisBottom(x));
+
+                g
+                    .append("g")
+                    .attr("class", "axis axis-y")
+                    .call(
+                        d3
+                        .axisLeft(y)
+                        .ticks(10)
+                        .tickSize(8)
+                    );
+
+                g
+                    .selectAll(".bar")
+                    .data(data)
+                    .enter()
+                    .append("rect")
+                    .attr("class", "bar")
+                    .attr("x", d => x(d.term))
+                    .attr("y", d => y(d.students))
+                    .attr("width", x.bandwidth())
+                    .attr("height", d => height - y(d.students))
+                    .on('mouseover', mouseover)
+                    .on('mousemove', mousemove)
+                    .on('mouseout', mouseout);
+
+                // tooltips
+                // CSS required to follow mouse
+                // Left or right side of mouse instead?
+                var div = d3.select('#container').append('div')
+                    .attr('class', 'tooltip')
+                    .style('display', 'none');
+
+                function mouseover() {
+                    div.style('display', 'inline');
+                }
+
+                function mousemove() {
+                    var d = d3.select(this).data()[0]
+                    div
+                        .html(d.term + '<hr/>' + d.students)
+                        .style('left', (d3.event.pageX - 34) + 'px')
+                        .style('top', (d3.event.pageY - 12) + 'px');
+                }
+
+                function mouseout() {
+                    div.style('display', 'none');
+                }
+
+
+            })
+
+
+
+        //Catch cors errors, figure out ways of bypassing, switch to github later due to local
+        .catch(err => {
+            svg
+                .append("text")
+                .attr("y", 20)
+                .attr("text-anchor", "left")
+                .style("font-size", "20px")
+                .style("font-weight", "bold")
+                .text(`Couldn't open the data file: "${err}".`);
+        });
+    </script>
+
 </body>
-
-<script>
-    const svg = d3.select("svg"),
-        margin = {
-            top: 20,
-            right: 20,
-            bottom: 30,
-            left: 50
-        },
-        width = +svg.attr("width") - margin.left - margin.right,
-        height = +svg.attr("height") - margin.top - margin.bottom,
-        x = d3
-        .scaleBand()
-        .rangeRound([0, width])
-        .padding(0.2),
-        y = d3.scaleLinear().rangeRound([height, 0]),
-        g = svg
-        .append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`);
-
-    // change to github link to ensure all files are now local    
-    d3
-        .json("hw3data.json")
-        .then(data => {
-            // No key used in array, single array, save for later
-            //data = data.Key;
-
-            x.domain(data.map(d => d.term));
-            y.domain([0, d3.max(data, d => d.students)]);
-
-            g
-                .append("g")
-                .attr("class", "axis axis-x")
-                .attr("transform", `translate(0,${height})`)
-                .call(d3.axisBottom(x));
-
-            g
-                .append("g")
-                .attr("class", "axis axis-y")
-                .call(
-                    d3
-                    .axisLeft(y)
-                    .ticks(10)
-                    .tickSize(8)
-                );
-
-            g
-                .selectAll(".bar")
-                .data(data)
-                .enter()
-                .append("rect")
-                .attr("class", "bar")
-                .attr("x", d => x(d.term))
-                .attr("y", d => y(d.students))
-                .attr("width", x.bandwidth())
-                .attr("height", d => height - y(d.students))
-                .on('mouseover', mouseover)
-                .on('mousemove', mousemove)
-                .on('mouseout', mouseout);
-
-            // tooltips
-            // CSS required to follow mouse
-            // Left or right side of mouse instead?
-            var div = d3.select('#container').append('div')
-                .attr('class', 'tooltip')
-                .style('display', 'none');
-
-            function mouseover() {
-                div.style('display', 'inline');
-            }
-
-            function mousemove() {
-                var d = d3.select(this).data()[0]
-                div
-                    .html(d.term + '<hr/>' + d.students)
-                    .style('left', (d3.event.pageX - 34) + 'px')
-                    .style('top', (d3.event.pageY - 12) + 'px');
-            }
-
-            function mouseout() {
-                div.style('display', 'none');
-            }
-
-
-        })
-
-
-
-    //Catch cors errors, figure out ways of bypassing, switch to github later due to local
-    .catch(err => {
-        svg
-            .append("text")
-            .attr("y", 20)
-            .attr("text-anchor", "left")
-            .style("font-size", "20px")
-            .style("font-weight", "bold")
-            .text(`Couldn't open the data file: "${err}".`);
-    });
-</script>
