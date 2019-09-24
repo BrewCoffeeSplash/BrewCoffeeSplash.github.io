@@ -19,12 +19,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
       integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
     <!--Bootstrap Reqs -->
-    		<!-- slim is just for bootstrap use all ver if needed-->
-		<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-		<script
-    src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
+    <!-- slim is just for bootstrap use all ver if needed-->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -35,7 +33,7 @@
     <script src="https://use.fontawesome.com/187c6f48ba.js"></script>
     <!--For jquery instead of in doc -->
 
-  
+
     <style>
       #chart rect {
         fill: #4aaeea;
@@ -117,7 +115,7 @@ jqxhr.complete(function() {
   </div>
 </footer>
 <script src="https://d3js.org/d3.v5.min.js"></script>
-<script>
+<!-- <script>
 $.getJSON( "hw3data.json", function( data ) {
   var items = [];
   $.each( data, function( key, val ) {
@@ -129,35 +127,68 @@ $.getJSON( "hw3data.json", function( data ) {
     html: items.join( "" )
   }).appendTo( "body" );
 });
-</script>
+</script> -->
 
 
 <script>
-  d3.json("hw3data.json", function(error, data){
-    data.forEach(function(d){
+  // set the dimensions of the canvas
+  var margin = { top: 20, right: 20, bottom: 70, left: 40 },
+    width = 600 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+
+  // set the ranges
+  var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+
+  var y = d3.scale.linear().range([height, 0]);
+
+  // define the axis
+  var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+
+
+  var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10);
+
+
+  // add the SVG element
+  var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform",
+      "translate(" + margin.left + "," + margin.top + ")");
+
+
+  // load the data
+  d3.json("hw3data.json", function (error, data) {
+    data.forEach(function (d) {
       d.Letter = d.Letter;
       d.Freq = +d.Freq;
     });
 
-      // scale the range of the data
-  x.domain(data.map(function(d) { return d.Letter; }));
-  y.domain([0, d3.max(data, function(d) { return d.Freq; })]);
+    // scale the range of the data
+    x.domain(data.map(function (d) { return d.Letter; }));
+    y.domain([0, d3.max(data, function (d) { return d.Freq; })]);
 
-  // add axis
-  svg.append("g")
+    // add axis
+    svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
-    .selectAll("text")
+      .selectAll("text")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
       .attr("dy", "-.55em")
-      .attr("transform", "rotate(-90)" );
+      .attr("transform", "rotate(-90)");
 
-  svg.append("g")
+    svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
-    .append("text")
+      .append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 5)
       .attr("dy", ".71em")
@@ -165,16 +196,16 @@ $.getJSON( "hw3data.json", function( data ) {
       .text("Frequency");
 
 
-  // Add bar chart
-  svg.selectAll("bar")
+    // Add bar chart
+    svg.selectAll("bar")
       .data(data)
-    .enter().append("rect")
+      .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.Letter); })
+      .attr("x", function (d) { return x(d.Letter); })
       .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.Freq); })
-      .attr("height", function(d) { return height - y(d.Freq); });
+      .attr("y", function (d) { return y(d.Freq); })
+      .attr("height", function (d) { return height - y(d.Freq); });
 
-});
+  });
 
 </script>
