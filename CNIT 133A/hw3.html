@@ -149,12 +149,12 @@ const svg     = d3.select("svg"),
       g       = svg.append("g")
                    .attr("transform", `translate(${margin.left},${margin.top})`);
 
-d3.json("hw3data.json").then( data => {
+d3.json("https://github.com/BrewCoffeeSplash/BrewCoffeeSplash.github.io/blob/master/CNIT%20133A/hw3data.json").then( data => {
  // data = data.RECORDS;
   //var rainbow = d3.scaleSequential(d3.interpolateRainbow).domain([0,d3.sum(data, d => 1)]);
   
-  x.domain(data.map(d => d.genre));
-  y.domain([0, d3.max(data, d => d.count)]);
+  x.domain(data.map(d => d.term));
+  y.domain([0, d3.max(data, d => d.students)]);
 
   g.append("g")
       .attr("class", "axis axis-x")
