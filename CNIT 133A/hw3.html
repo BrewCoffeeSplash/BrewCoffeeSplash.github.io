@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <head>
+    <meta name="generator"
+      content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+    <!-- Required meta tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>CNIT 133A HW1</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <!-- Font for navbar logo -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy" />
+    <!-- For various icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <!--Bootstrap Reqs -->
+    		<!-- slim is just for bootstrap use all ver if needed-->
+		<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+		<script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/187c6f48ba.js"></script>
+    <!--For jquery instead of in doc -->
+
+    <style>
+      #chart rect {
+        fill: #4aaeea;
+      }
+
+      #chart text {
+        fill: white;
+        font: 10px sans-serif;
+        text-anchor: end;
+      }
+
+      .axis text {
+        font: 10px sans-serif;
+      }
+
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #fff;
+        shape-rendering: crispEdges;
+      }
+
+      body {
+        background: #1a1a1a;
+        color: #eaeaea;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+<script>
+fetch("hw3data.json")
+.then(res => res.json())
+.then(data => console.log(data))
+</script>
+
+  <!-- <script>
+// Assign handlers immediately after making the request,
+// and remember the jqxhr object for this request
+var jqxhr = $.getJSON( "hw3data.json", function() {
+  console.log( "success" );
+})
+  .done(function() {
+    console.log( "second success" );
+  })
+  .fail(function() {
+    console.log( "error" );
+  })
+  .always(function() {
+    console.log( "complete" );
+  });
+ 
+// Perform other work here ...
+ 
+// Set another completion function for the request above
+jqxhr.complete(function() {
+  console.log( "second complete" );
+});
+</script> -->
+
+<body>
+  <div id="chart" class="container">
+
+
+  </div>
+</body>
+<footer class="footer justify-content-between">
+  <div class="row">
+    <div class="col col-sm-offset-2">
+      <a href="https://jigsaw.w3.org/css-validator/check/referer"><i class="fab fa-html5 fa-3x" aria-hidden="true"
+          style="padding-top: 5px;"></i></a>
+
+      <a href="https://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10"
+          alt="Valid XHTML 1.0!" height="31" width="88" /></a>
+    </div>
+
+    <div class="col">
+      <script>
+        var dateModified = document.lastModified;
+        mydate = dateModified.slice(0, 16);
+        document.write("Last updated: " + mydate);
+      </script>
+    </div>
+  </div>
+</footer>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<!-- <script>
+  $.getJSON( "hw3data.json", function( data ) {
+  var items = [];
+  $.each( data, function( key, val ) {
+    items.push( "<li id='" + key + "'>" + val + "</li>" );
+  });
+ 
+  $( "<ul/>", {
+    "class": "my-new-list",
+    html: items.join( "" )
+  }).appendTo( "body" );
+});
+</script> -->
