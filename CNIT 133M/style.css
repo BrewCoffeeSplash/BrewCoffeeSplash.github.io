@@ -169,6 +169,21 @@ div#footer {
 }	
 
 
+/* animation example, maybe have text behind the picture? or shaking text? color transition? */
+@keyframes appear{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.cow {
+    animation-name: appear;
+    animation-duration: 3s;
+
+}
 
 /*flexbox usage */
 
