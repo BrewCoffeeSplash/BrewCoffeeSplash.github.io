@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8" />
+  <!-- Responsive meta viewport via initial scale, shrink to fit -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Relevant title -->
+  <title>User Latitude and Longitude Location Page</title>
+  <!-- CSS bootstrap, custom, etc -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="hw3style.css" rel="stylesheet">
+  <!-- Leaflet for geolocation -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+
+</head>
+
+
+<body>
+  <!-- !!!same navbar for all pages, always visible via fixed-top -->
+  <!-- navbar-expand for collapsing, fixed -->
+  <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <a href="#" class="navbar-brand">Brand</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav">
+        <a href="hw3.html" class="nav-item nav-link active">Home</a>
+        <a href="products.html" class="nav-item nav-link">Products</a>
+        <a href="location.html" class="nav-item nav-link">Location</a>
+        <a href="contacts.html" class="nav-item nav-link " tabindex="-1">Contact Us</a>
+        <a href="extra.html" class="nav-item nav-link ">Extra</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Where are you?</h1>
+    <h3>Find out!</h3>
+  </div>
+
+  <div class="container">
+    <div id="memap"></div>
+  </div>
+  <script>
+
+
+    //using leaflet basic guide example and mobile
+
+    // var mymap = L.map('memap').fitWorld();
+    var mymap = L.map('memap').locate({ setView: true, maxZoom: 16 });
+    // var marker = L.marker.setLatLng(latlng).addTo(mymap);
+
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiYnJld2NvZmZlZXNwbGFzaCIsImEiOiJjazJrcTR2dmYxMnZkM2hvaGhhZGpzc2diIn0.mhoDQdKq0BC_1D-P-gMI6w'
+  }).addTo(mymap);
+
+  
+    // var map = L.map('map').fitWorld();
+
+    // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    //   maxZoom: 18,
+    //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+    //     '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+    //     'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    //   id: 'mapbox.streets'
+    // }).addTo(map);
+
+    function onLocationFound(e) {
+      var location = e.latlng ;
+
+      L.marker(e.latlng).addTo(mymap)
+        .bindPopup("You are at " + location).openPopup();
+
+      ;
+    }
+
+    function onLocationError(e) {
+      alert(e.message);
+    }
+
+    mymap.on('locationfound', onLocationFound);
+    mymap.on('locationerror', onLocationError);
+
+    // map.locate({ setView: true, maxZoom: 16 });
+
+
+  </script>
+
+  <footer class="footer">
+    <div class="container">
+      <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px"
+        href="https://unsplash.com/@nynnes?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"
+        target="_blank" rel="noopener noreferrer"
+        title="Download free do whatever you want high-resolution photos from Nynne Schrøder"><span
+          style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg"
+            style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white"
+            viewBox="0 0 32 32">
+            <title>unsplash-logo</title>
+            <path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path>
+          </svg></span><span style="display:inline-block;padding:2px 3px">Nynne Schrøder</span></a>
+    </div>
+  </footer>
+
+  <!-- Always place at bottom of body from now on-->
+  <!-- JS files: jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>

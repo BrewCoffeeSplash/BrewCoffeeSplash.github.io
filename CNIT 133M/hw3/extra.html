@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8" />
+  <!-- Responsive meta viewport via initial scale, shrink to fit -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Relevant title -->
+  <title>WURFL database capabilities</title>
+  <!-- CSS bootstrap, custom, etc -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="hw3style.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- !!!same navbar for all pages, always visible via fixed-top -->
+  <!-- navbar-expand for collapsing, fixed -->
+  <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <a href="#" class="navbar-brand">Brand</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav">
+        <a href="hw3.html" class="nav-item nav-link active">Home</a>
+        <a href="products.html" class="nav-item nav-link">Products</a>
+        <a href="location.html" class="nav-item nav-link">Location</a>
+        <a href="contacts.html" class="nav-item nav-link " tabindex="-1">Contact Us</a>
+        <a href="extra.html" class="nav-item nav-link ">Extra</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>WURFL database</h1>
+    <h3>Capabilites for developers</h3>
+  </div>
+
+  <div class="container">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Capability</th>
+      <th scope="col">Description</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>device_os</td>
+      <td>Identifies the operating system on the device. Useful for apps and determining compability due to differences between OS's like Android and iOS. Can be used for targetted advertising such as displaying other Apple products if the OS is iOS.</td>
+
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>mobile_browser</td>
+      <td>Identify the browser in use on the device. Could be useful in targetting certain browsers and ensuring no errors occur with differences on browser features/capabilities. Targetted advertising such as plugins/extensions for their browser or to convince switching to a different browser.</td>
+
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>ram</td>
+      <td>Returns amount of RAM the device has. Can determine if device can run larger apps that require larger amounts of RAM, or change app settings depending on available RAM. Knowing the available RAM allows a developer to  adapt their app/plugin/extension to function quickly with what's available.</td>
+ 
+    </tr>
+  </tbody>
+</table>
+  </div>
+  
+  <footer class="footer">
+    <div class="container">
+      <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px"
+        href="https://unsplash.com/@nynnes?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"
+        target="_blank" rel="noopener noreferrer"
+        title="Download free do whatever you want high-resolution photos from Nynne Schrøder"><span
+          style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg"
+            style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white"
+            viewBox="0 0 32 32">
+            <title>unsplash-logo</title>
+            <path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path>
+          </svg></span><span style="display:inline-block;padding:2px 3px">Nynne Schrøder</span></a>
+    </div>
+  </footer>
+
+  <!-- Always place at bottom of body from now on-->
+  <!-- JS files: jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

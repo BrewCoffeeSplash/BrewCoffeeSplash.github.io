@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8" />
+  <!-- Responsive meta viewport via initial scale, shrink to fit -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Relevant title -->
+  <title>ABC Toys Products</title>
+  <!-- CSS bootstrap, custom, etc -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+  <link href="products.css" rel="stylesheet">
+  <link href="hw3style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+  <!-- !!!same navbar for all pages, always visible via fixed-top -->
+  <!-- navbar-expand for collapsing, fixed -->
+  <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <a href="#" class="navbar-brand">Brand</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav">
+        <a href="hw3.html" class="nav-item nav-link active">Home</a>
+        <a href="products.html" class="nav-item nav-link">Products</a>
+        <a href="location.html" class="nav-item nav-link">Location</a>
+        <a href="contacts.html" class="nav-item nav-link " tabindex="-1">Contact Us</a>
+        <a href="extra.html" class="nav-item nav-link ">Extra</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- At least 3 toys with picture, description, and collapsible via toy name to show pic and info -->
+  <!-- make via boostrap accordian, look up cards component -->
+  <div class="container">
+    <h1>Available ABC Products</h1>
+    <h3>Click on each for more information!</h3>
+  </div>
+
+  <!-- have a button open up the accordian for toys list, can use if other product categories needed -->
+  <button class="toysList btn btn-primary" type="button" data-toggle="collapse" data-target="#toysList"
+    aria-expanded="false" aria-controls="toysList">
+    Toys
+  </button>
+
+  <div class="collapse show" id="toysList">
+    <div class="card card-body">
+      <div id="accordion">
+        <div class="card">
+
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                aria-controls="collapseOne">
+                Plush Bear Pilot
+              </button>
+            </h5>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              <div class="card mb-3" style="max-width: 680px;">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <img src="images/plushbear.png" class="card-img" alt="Plush Bear Pilot">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Airpilot Captain Bear</h5>
+                      <p class="card-text">This is the best bear! A daring bear pilot! A cute scarf and glasses for
+                        flying high!
+                        <br> A perfect companion for any age during playtime and naps.</p>
+                      <p class="card-text"><small class="text-muted">Last updated 11/4/19</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                  aria-expanded="false" aria-controls="collapseTwo">
+                  Plush Cat
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <div class="card mb-3" style="max-width: 680px;">
+                  <div class="row no-gutters">
+                    <div class="col-md-4">
+                      <img src="images/plush2cats.png" class="card-img" alt="Plush 2 Cats">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Two Cuddly Cats</h5>
+                        <p class="card-text">With a derpy face and fluffy shape, these two adorable plush cat pillows
+                          will be perfect for your child.
+                          Your child will have hours of fun! They're also great sleeping companions.
+                          <br> Be sure they have company by looking at our other friendly stuffed animals.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 11/4/19</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                With a derpy face and fluffy shape, these two adorable plush cat pillows will be perfect for your child.
+                Your child will have hours of fun! They're also great sleeping companions.
+                <br> Be sure they have company by looking at our other friendly stuffed animals.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                  aria-expanded="false" aria-controls="collapseThree">
+                  Plush Elephant
+                </button>
+              </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+              <div class="card-body">
+                <div class="card mb-3" style="max-width: 680px;">
+                  <div class="row no-gutters">
+                    <div class="col-md-4">
+                      <img src="images/plushelephant.png" class="card-img" alt="Plush Elephant">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Plush Elephant</h5>
+                        <p class="card-text">Not as large as a real elephant, but this little guy is as playful as baby
+                          elephant! <br>
+                          Your child will have many trips to the wonders of the Sahara with their new long-nosed
+                          companion! Hang on your wall for easy storage and a cute decoration!</p>
+                        <p class="card-text"><small class="text-muted">Last updated 11/4/19</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+              <div class="card-body">
+                Not as large as a real elephant, but this little guy is as playful as baby elephant! <br>
+                Your child will have many trips to the wonders of the Sahara with their new long-nosed companion!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px"
+              href="https://unsplash.com/@nynnes?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"
+              target="_blank" rel="noopener noreferrer"
+              title="Download free do whatever you want high-resolution photos from Nynne Schrøder"><span
+                style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg"
+                  style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white"
+                  viewBox="0 0 32 32">
+                  <title>unsplash-logo</title>
+                  <path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path>
+                </svg></span><span style="display:inline-block;padding:2px 3px">Nynne Schrøder</span></a>
+          </div>
+          <div class="col">
+            <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px"
+              href="https://unsplash.com/@barrettward?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"
+              target="_blank" rel="noopener noreferrer"
+              title="Download free do whatever you want high-resolution photos from Barrett Ward"><span
+                style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg"
+                  style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white"
+                  viewBox="0 0 32 32">
+                  <title>unsplash-logo</title>
+                  <path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path>
+                </svg></span><span style="display:inline-block;padding:2px 3px">Barrett Ward</span></a></div>
+          <div class="col">
+            <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px"
+              href="https://unsplash.com/@theburbgirl?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"
+              target="_blank" rel="noopener noreferrer"
+              title="Download free do whatever you want high-resolution photos from Lauren Fleischmann"><span
+                style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg"
+                  style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white"
+                  viewBox="0 0 32 32">
+                  <title>unsplash-logo</title>
+                  <path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path>
+                </svg></span><span style="display:inline-block;padding:2px 3px">Lauren Fleischmann</span></a></div>
+          <div class="col">
+            <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px"
+              href="https://unsplash.com/@renichinguyen?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"
+              target="_blank" rel="noopener noreferrer"
+              title="Download free do whatever you want high-resolution photos from Nguyen Bui"><span
+                style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg"
+                  style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white"
+                  viewBox="0 0 32 32">
+                  <title>unsplash-logo</title>
+                  <path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path>
+                </svg></span><span style="display:inline-block;padding:2px 3px">Nguyen Bui</span></a></div>
+        </div>
+      </div>
+    </footer>
+
+
+
+    <!-- Always place at bottom of body from now on-->
+    <!-- JS files: jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+
+</body>
+
+</html>

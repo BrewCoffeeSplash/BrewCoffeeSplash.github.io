@@ -1,0 +1,15 @@
+/* be direct with selection so navbar isn't hit */
+
+
+.toysList.collapsed:before, .card button.collapsed:before {
+        
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content:"\f05a";
+    }
+.toysList:before, .card button:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content:"\f057";
+
+}
