@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/CNIT%20133A/hwreact/static/css/main.b100e6da.chunk.css",
+    "main.js": "/CNIT%20133A/hwreact/static/js/main.02d9c8e3.chunk.js",
+    "main.js.map": "/CNIT%20133A/hwreact/static/js/main.02d9c8e3.chunk.js.map",
+    "runtime-main.js": "/CNIT%20133A/hwreact/static/js/runtime-main.ce756533.js",
+    "runtime-main.js.map": "/CNIT%20133A/hwreact/static/js/runtime-main.ce756533.js.map",
+    "static/css/2.833dd627.chunk.css": "/CNIT%20133A/hwreact/static/css/2.833dd627.chunk.css",
+    "static/js/2.3832f734.chunk.js": "/CNIT%20133A/hwreact/static/js/2.3832f734.chunk.js",
+    "static/js/2.3832f734.chunk.js.map": "/CNIT%20133A/hwreact/static/js/2.3832f734.chunk.js.map",
+    "index.html": "/CNIT%20133A/hwreact/index.html",
+    "precache-manifest.84461829f5b1a171bfff7634bf4b9747.js": "/CNIT%20133A/hwreact/precache-manifest.84461829f5b1a171bfff7634bf4b9747.js",
+    "service-worker.js": "/CNIT%20133A/hwreact/service-worker.js",
+    "static/css/2.833dd627.chunk.css.map": "/CNIT%20133A/hwreact/static/css/2.833dd627.chunk.css.map",
+    "static/css/main.b100e6da.chunk.css.map": "/CNIT%20133A/hwreact/static/css/main.b100e6da.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ce756533.js",
+    "static/css/2.833dd627.chunk.css",
+    "static/js/2.3832f734.chunk.js",
+    "static/css/main.b100e6da.chunk.css",
+    "static/js/main.02d9c8e3.chunk.js"
+  ]
+}
