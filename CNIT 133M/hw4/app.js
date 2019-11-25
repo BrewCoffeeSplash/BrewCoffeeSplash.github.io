@@ -19,12 +19,12 @@ window.addEventListener('beforeinstallprompt', e => {
 //2 Works
 var button1 = document.getElementById("lightblue");
 button1.addEventListener("click", function () {
-    document.body.style.backgroundImage = "url(/images/lightblue.jpg)";
+    document.body.style.backgroundImage = "url(images/lightblue.jpg)";
 });
 
 var button1 = document.getElementById("lightgold");
 button1.addEventListener("click", function () {
-    document.body.style.backgroundImage = "url(/images/lightgold.jpg)";
+    document.body.style.backgroundImage = "url(images/lightgold.jpg)";
 });
 
 //3 Test a button
