@@ -1,0 +1,41 @@
+body {   background: white
+    no-repeat
+    center
+    fixed;
+  background-size: cover;	 }
+	   
+h1 { text-align: center; 
+     margin-bottom: 2em;
+	 font-style: italic; 
+	color: rgb(88, 42, 42);}
+
+/* 
+lightblue {
+	background-image: url("lightblue.jpg");
+    no-repeat
+    center
+	fixed;
+	} */
+
+/* lightgold {
+	background-image: url("lightgold.jpg");
+    no-repeat
+    center
+	fixed;
+	} */
+
+.lightgold {
+  background: url("/images/lightgold.jpg")
+    no-repeat
+    center
+    fixed;
+  background-size: cover;	
+  }
+  
+.lightblue {
+  background: url("images/lightblue.jpg")
+    no-repeat
+    center
+    fixed;
+  background-size: cover;	
+  }
