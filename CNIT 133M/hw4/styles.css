@@ -25,7 +25,7 @@ lightblue {
 	} */
 
 .lightgold {
-  background: url("/images/lightgold.jpg")
+  background: url("./images/lightgold.jpg")
     no-repeat
     center
     fixed;
@@ -33,7 +33,7 @@ lightblue {
   }
   
 .lightblue {
-  background: url("images/lightblue.jpg")
+  background: url("./images/lightblue.jpg")
     no-repeat
     center
     fixed;
