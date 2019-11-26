@@ -1,6 +1,7 @@
 var CACHE_VERSION = 'progwebapp-v1';
 var CACHE_FILES = [
-    './',
+    'index.html',
+    './', //alias for index.html
     'images/lightblue.jpg',
     'images/lightgold.jpg',
     'app.js',
