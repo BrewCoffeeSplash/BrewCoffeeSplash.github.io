@@ -1,22 +1,20 @@
-var CACHE_VERSION = 'progwebapp-v1';
+var CACHE_VERSION = 'myapp-v1';
 var CACHE_FILES = [
-    
-    'images/lightblue.jpg',
-    'images/lightgold.jpg',
+    'images/offline.png',
     'app.js',
-
+    'styles.css'
 ];
 
 self.addEventListener('install', event => {
     console.log('SW installed');
     event.waitUntil(
         caches
-            .open(CACHE_VERSION)
-            .then(cache => {
-                console.log('SW caching files');
-                cache.addAll(CACHE_FILES)
-            })
-            .then(() => self.skipWaiting())
+        .open(CACHE_VERSION)
+        .then(cache => {
+            console.log('SW caching files');
+            cache.addAll(CACHE_FILES)
+        })
+        .then(() => self.skipWaiting())
     );
 });
 
@@ -26,7 +24,7 @@ self.addEventListener('activate', event => {
         caches.keys().then(keyNames => {
             return Promise.all(
                 keyNames.map(key => {
-                    if (key !== CACHE_VERSION) {
+                    if(key !== CACHE_VERSION) {
                         console.log('SW clearing old caches');
                         return caches.delete(key);
                     }
