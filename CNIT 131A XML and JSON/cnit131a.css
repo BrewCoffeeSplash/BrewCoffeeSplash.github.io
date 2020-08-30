@@ -53,9 +53,8 @@ nav {
 
   color: #DDD2C2;
   background: #5E5B5B;
-
   border: 1px solid #AB9A89;
-  box-shadow: 5px 5px 5px #E9E5D5;
+  box-shadow: 3px 3px 3px #E9E5D5;
 }
 	
 .sectionstyle {
@@ -63,29 +62,40 @@ nav {
 	background-color: #5E5B5B;
 	color: #E9E5D5;
 	border: 1px solid #AB9A89;
-	box-shadow: 3px 3px 5px 1px #E9E5D5;
+	box-shadow: 3px 3px 3px 1px #E9E5D5;
 }
 .sectionstyle2 {
 	margin-bottom: 1px;
 	background-color: #5E5B5B;
 	color: #E9E5D5;
 	border: 1px solid #AB9A89;
-	box-shadow: 3px 3px 5px 6px #E9E5D5;
+	box-shadow: 3px 3px 3px 1px #E9E5D5;
 }
 
 .list-group-item-action li :hover {
 	background-color: blue !important;
 	color: red;
 }
-/* Footer */
-footer {
-  background: #291E40 !important;
-  color: #DDD2C2;
+
+.table1 tbody {
+    	box-shadow: 3px 3px  #E9E5D5;
+}
+
+.table1 a{
+    color: #F7F7F4;
+    /* background-color: #5E5B5B; */
 
 }
 
+/* Footer */
+/* footer {
+  background: #655E5D ;
+  color: #DDD2C2;
+
+} */
+
 .footer {
-  background: #291E40 !important;
+  background: #655E5D ;
   color: #DDD2C2;
 	text-align: center;
 }
