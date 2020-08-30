@@ -1,0 +1,111 @@
+body {
+  background: url("/images/COLOURlovers.com-d_u_s_k.png")
+    no-repeat
+    center
+    fixed;
+  background-size: cover;
+
+}
+
+/* Navbar */
+.header-logo {
+  font-size: 28px;
+  font-family: 'Satisfy', cursive;
+  padding: 5px;
+}
+
+.header-logo :hover {
+  color: #DDD2C2 !important;
+  transition: .7s color;
+  text-decoration: underline;
+}
+
+nav {
+  box-shadow: 3px 3px 3px #E2DECD;
+  margin: 0px;
+  padding: 0px;
+}
+
+.navbar-nav a, li  {
+  color: #DDD2C2 !important;
+}
+
+.navbar-text {
+	color: #DDD2C2 !important;
+}
+
+.navbar-nav li :hover {
+  transition: .7s color;
+  color: red !important;
+}
+
+.class-title {
+  color: #DDD2C2;
+  font-family: 'Satisfy', cursive;
+  font-size: 28px;
+  text-align: right;
+  padding: 5px;
+  margin: 0px;
+}
+/* End-Navbar */
+
+.container {
+
+  color: #DDD2C2;
+  background: #5E5B5B;
+
+  border: 1px solid #AB9A89;
+  box-shadow: 5px 5px 5px #E9E5D5;
+}
+	
+.sectionstyle {
+	margin-bottom: 20px;
+	background-color: #5E5B5B;
+	color: #E9E5D5;
+	border: 1px solid #AB9A89;
+	box-shadow: 3px 3px 5px 1px #E9E5D5;
+}
+.sectionstyle2 {
+	margin-bottom: 1px;
+	background-color: #5E5B5B;
+	color: #E9E5D5;
+	border: 1px solid #AB9A89;
+	box-shadow: 3px 3px 5px 6px #E9E5D5;
+}
+
+.list-group-item-action li :hover {
+	background-color: blue !important;
+	color: red;
+}
+/* Footer */
+footer {
+  background: #291E40 !important;
+  color: #DDD2C2;
+
+}
+
+.footer {
+  background: #291E40 !important;
+  color: #DDD2C2;
+	text-align: center;
+}
+
+footer a {
+  color: #DDD2C2;
+  text-decoration: underline;
+  	text-align: center;
+}
+
+.foot-pic {
+  width: 120px;
+  height: 60px;
+  border: 0 none;
+}
+
+.red-text {
+  color: red !important;
+}
+
+.blue-text {
+  color: blue !important;
+}
