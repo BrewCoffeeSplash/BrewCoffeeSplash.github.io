@@ -28,12 +28,12 @@
                             </td>
                             <xsl:choose>
                                 <xsl:when test="Account_Total &lt;= 80000">
-                                    <td class="account_total under_equal_8k">
+                                    <td class="account_total under_equal_8k">$
                                         <xsl:value-of select="Account_Total"/>
                                     </td>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <td class="account_total ">
+                                    <td class="account_total">$
                                         <xsl:value-of select="Account_Total"/>
                                     </td>
                                 </xsl:otherwise>
