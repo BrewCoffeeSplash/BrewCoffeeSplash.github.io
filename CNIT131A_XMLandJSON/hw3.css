@@ -3,7 +3,11 @@ body {
 }
 
 .accounts_table{
-    border: 1px solid blue;
+    border: 1px solid darkslategrey;
+}
+
+.accounts_table tr:hover {
+    background-color: aqua;
 }
 
 .accounts_table td, .accounts_table th{
