@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<!-- Simple XML file with no CSS -->
+<?xml-stylesheet type="text/css" href="./hw2.css" ?>
+
+<!-- Books are being donated by instructors and publishers -->
+<Books>
+    <!-- <Book>
+        <Title pages="121">Title</Title>
+        <Author>Author</Author>
+        <Publisher>Publisher &#169;</Publisher>
+    </Book> -->
+    <Book pages="123">
+        <Title >Introduction to HTML</Title>
+        <Author>Joseph Gardner</Author>
+        <Publisher>Press &#169;</Publisher>
+    </Book>
+    <Book pages="124">
+        <Title >Networking Infrastructure</Title>
+        <Author>Adam Douglas &amp; Janice Dall</Author>
+        <Publisher>Cengage &#169;</Publisher>
+    </Book>
+    <Book pages="125">
+        <Title >Soft Skills in IT</Title>
+        <Author>Mark Hunter</Author>
+        <Publisher>Bolding Publisher &#169;</Publisher>
+    </Book>
+    <Book pages="126">
+        <Title >Network Security</Title>
+        <Author>Jennifer Starter &amp; Yuri Adantov</Author>
+        <Publisher>Wrox &#169;</Publisher>
+    </Book>
+    <Book pages="127">
+        <Title >XML &amp; JSON</Title>
+        <Author>Stuart Bell</Author>
+        <Publisher>Cengage &#169;</Publisher>
+    </Book>
+</Books>
