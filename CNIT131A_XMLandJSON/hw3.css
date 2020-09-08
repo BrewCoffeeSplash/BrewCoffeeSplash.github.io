@@ -1,0 +1,25 @@
+body {
+    background-color: aquamarine;
+}
+
+.accounts_table{
+    border: 1px solid blue;
+}
+
+.accounts_table td, .accounts_table th{
+    border: 3px solid darkslateblue;
+    padding: 3px;
+}
+
+.accounts_table th {
+    font-weight: bold;
+    color: darkgoldenrod;
+}
+.account_total {
+    text-align: right;
+}
+
+.under_equal_8k {
+    font-weight: bold;
+    color: red;
+}
