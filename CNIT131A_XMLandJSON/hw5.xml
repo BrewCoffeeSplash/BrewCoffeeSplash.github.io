@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE Products [
+  <!ENTITY USA "Made in USA">
+
+  <!ELEMENT Products (Prod+)>
+  <!ELEMENT Prod (Details, Quantity, Unit_Price, Color?, Loc)>
+  <!ATTLIST Prod ProdID ID #REQUIRED>
+  <!ELEMENT Details (Short_Desc, Long_Desc)>
+  <!ELEMENT Short_Desc (#PCDATA)>
+  <!ELEMENT Long_Desc (#PCDATA)>
+  <!ELEMENT Quantity (#PCDATA)>
+  <!ELEMENT Unit_Price (#PCDATA)>
+  <!ELEMENT Color (#PCDATA)>
+  <!ELEMENT Loc (#PCDATA)>
+]>
+
+<Products>
+
+  <Prod ProdID="P00129934">
+    <Details>
+      <Short_Desc>Website Magazine</Short_Desc>
+      <Long_Desc>Printed issue Website Magazine</Long_Desc>
+    </Details>
+    <Quantity>20</Quantity>
+    <Unit_Price>3.50</Unit_Price>
+    <Loc>&USA;</Loc>
+  </Prod>
+
+  <Prod ProdID="P1234567">
+    <Details>
+      <Short_Desc>Lab Apron</Short_Desc>
+      <Long_Desc>Chemistry Lab Apron</Long_Desc>
+    </Details>
+    <Quantity>30</Quantity>
+    <Unit_Price>5.50</Unit_Price>
+    <Color>White</Color>
+    <Loc>&USA;</Loc>
+  </Prod>
+
+  <Prod ProdID="P3256788">
+    <Details>
+      <Short_Desc>T-Shirt</Short_Desc>
+      <Long_Desc>College cotton shirt</Long_Desc>
+    </Details>
+    <Quantity>28</Quantity>
+    <Unit_Price>6.50</Unit_Price>
+    <Color>Red</Color>
+    <Loc>&USA;</Loc>
+  </Prod>
+
+  <Prod ProdID="P0025443">
+    <Details>
+      <Short_Desc>Notebook</Short_Desc>
+      <Long_Desc>5-Subject Notebook</Long_Desc>
+    </Details>
+    <Quantity>15</Quantity>
+    <Unit_Price>2.65</Unit_Price>
+    <Loc>&USA;</Loc>
+  </Prod>
+
+</Products>
