@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<Member xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./hw6.xsd">
+    <Name>Jonathan Mark</Name>
+    <Age>21</Age>
+    <Job>Consultant</Job>
+    <Date>2016-05-20</Date>
+    <Phone>415-343-2277</Phone>
+</Member>

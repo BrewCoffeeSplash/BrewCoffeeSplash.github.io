@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation>Simple XML Schema for practice</xs:documentation>
+  </xs:annotation>
+  <xs:element name="Member">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Name" type="name30Max" />
+        <xs:element name="Age"  type="age21Min" default="21" />
+        <xs:element name="Job" type="xs:string" />
+        <xs:element name="Date" type="xs:date" />
+        <xs:element name="Phone" type="phoneSequence334" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+<xs:simpleType name="name30Max">
+    <xs:restriction base="xs:string">
+        <xs:maxLength value="30" />
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="age21Min">
+    <xs:restriction base="xs:integer">
+        <xs:minInclusive value="21"/>
+    </xs:restriction>
+</xs:simpleType>  
+
+<xs:simpleType name="phoneSequence334">
+    <xs:restriction base="xs:string">
+        <xs:pattern value="\d{3}-\d{3}-\d{4}" />
+    </xs:restriction>
+</xs:simpleType>
+
+</xs:schema>
