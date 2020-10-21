@@ -22,7 +22,7 @@
 </xs:simpleType>
 
 <xs:simpleType name="age21Min">
-    <xs:restriction base="xs:integer">
+    <xs:restriction base="xs:positiveinteger">
         <xs:minInclusive value="21"/>
     </xs:restriction>
 </xs:simpleType>  
