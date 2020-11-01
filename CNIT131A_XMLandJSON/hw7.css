@@ -1,0 +1,31 @@
+@namespace west url(http://www.gov.org/west);
+@namespace east url(http://www.gov.org/east);
+
+states {
+    background-color: lightskyblue;
+}
+
+state { 
+    display: block; 
+}
+
+/* east|states {
+    background-color: lightslategray;
+    color: red;
+} */
+east|state  {
+    background-color: turquoise;
+
+}
+
+/* west|states {
+    background-color: teal;
+    color: blue;
+} */
+west|state {
+    background-color: darkgray;
+
+}
+
+
+
