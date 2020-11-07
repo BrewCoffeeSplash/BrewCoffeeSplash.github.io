@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XQuery Report by William Sawyer</title>
+    <!-- <script type="text/javascript" src="./mxqueryjs/mxqueryjs.nocache.js"></script>
+    <script type="application/xquery">
+        insert node 
+<ul>
+{
+for $x in doc("hw8.xml")/bookstore/book
+where 
+   $x/price<30
+return <li>$x/title</li>
+}
+</ul>
+
+        into b:dom()//li[@name="test"]
+    </script> -->
+</head>
+<body>
+    <h1 style="text-align: center;">XQuery Report by William Sawyer</h1>
+    <ul>
+        <li>
+            What is the main characteristic of XQuery?
+            <ul>
+                <li>
+                    It's similar to SQL or MongoDB in querying data but can also query data from multiple data sources. It's a expression-oriented programing language with a simple type system.(1)
+                </li>
+            </ul>
+        </li>
+        <li name="test">
+            Look at the XML in hw8.xml file (you will find this file in the CNIT131AFiles.zip folder you downloaded for this
+            course). Look at the code in hw8.xq and based on your research, what is this code doing if applied on the XML of
+            hw8.xml? Explain this example within your report
+            <ul>
+                <li>
+                    It looks the the XML file hw8.xml and goes to the book element of the root element bookstore. Under the price element of the book element, it then looks for any that have the price element that is less than 30. It returns the resulting title element for each book.
+                </li>
+            </ul>
+        </li>
+        <li>
+            What exactly is XQIB? How it can be used with XQuery?
+            <ul>
+                <li>
+                    XQIB allows you to execute Xquery code like you would use Javascript. You can change the DOM, add event listeners, and make REST calls. (2,3)
+                </li>
+            </ul>
+        </li>
+                <li>
+                    Sources
+                    <ol>
+                        <li>
+                            https://www.javatpoint.com/xquery-features
+                        </li>
+                        <li>http://xqib.org/index.php</li>
+                        <li>https://websci.informatik.uni-freiburg.de/teaching/ws201112/xmldb/sheets/xqib-documentation.pdf</li>
+                    </ol>
+                </li>
+
+    </ul>
+
+</body>
+</html>
+
