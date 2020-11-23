@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg"
+    width="300px" height="250px" viewBox="0 0 300 250">
+    <defs>
+        <filter id="shadow" x="0" y="0">
+            <feGaussianBlur stdDeviation="5" />
+            <feOffset dx="5" dy="5" />
+        </filter>
+    </defs>
+
+    <circle fill="grey" cx="150" cy="125" r="60px" filter="url(#shadow)" />
+    <circle fill="blue" cx="150" cy="125" r="60px" stroke="red" stroke-width="5px" />
+    
+</svg>
