@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homework 10 Question and JSON Lin</title>
+  <link rel="stylesheet" href="hw10.css" />
+</head>
+
+<body>
+  <h1>Homework 10 Question and JSON Link</h1>
+
+  <p>
+    <strong>Question:</strong> Suppose you have the following code in
+    JavaScript (recognize the data being passed to the variable in JSON
+    format) - the <strong>var</strong> statement is just to declare the
+    variable called
+    <strong>friends</strong>
+  </p>
+
+  <p>
+    <span class="fontreq">var friends = [{ </span>
+    <br />
+    <span class="fontreq">&nbsp; &nbsp; &nbsp;"name": "John", </span>
+    <br />
+    <span class="fontreq">&nbsp; &nbsp; &nbsp;"age": "28", </span>
+    <br />
+    <span class="fontreq">&nbsp; &nbsp; &nbsp;"gender": "male", </span>
+    <br />
+    <span class="fontreq">&nbsp; &nbsp; &nbsp;"profession": "sales rep"
+    </span>
+    <br />
+    <span class="fontreq">}, </span> <br /><span class="fontreq">{ </span>
+    <br />
+    <span class="fontreq">&nbsp; &nbsp; &nbsp;"name": "Maryenne", </span>
+    <br />
+    <span class="fontreq">&nbsp; &nbsp; &nbsp;"age": "26", </span>
+    <br />
+    <span class="fontreq">&nbsp; &nbsp; &nbsp;"gender": "female", </span>
+    <br />
+    <span class="fontreq">&nbsp; &nbsp; &nbsp;"profession": "web developer"
+    </span>
+    <br />
+    <span class="fontreq">}<span style="line-height: 1.4">];</span></span>
+  </p>
+
+  <p>
+    <span class="fontreq">var tablecell1 =
+      '&lt;tr&gt;&lt;td&gt;' + friends[0].name + '&lt;/td&gt;&lt;td&gt;' + friends[0].profession +
+      '&lt;/td&gt;&lt;/tr&gt;'
+    </span>
+  </p>
+
+  <p>
+    <span style="line-height: 1.4">
+      Then, later in the program, that variable <strong>friends</strong> (that
+      looks like an array, right?) is used to write some data in a table. So,
+      if you see the following command in this same JavaScript code, that is
+      referring to the above JSON structure, what will be the content of the
+      variable <strong>tablecell1</strong>? Remember, the
+      <strong>var</strong> statement is only declaring the
+      <strong>tablecell1</strong> variable!
+    </span>
+  </p>
+
+  <p>The variable <strong>tablecell1</strong> consists of HTML: 
+    "&lt;tr&gt;&lt;td&gt;john&lt;/td&gt;&lt;td&gt;sales rep&lt;/td&gt;&lt;/tr&gt;"
+    <br>It would probably be inserted into a &lt;table&gt;&lt;/table&gt; to show properly.
+
+  </p>
+  <p><a href="./hw10.json">My hw10.json file</a></p>
+</body>
+
+</html>

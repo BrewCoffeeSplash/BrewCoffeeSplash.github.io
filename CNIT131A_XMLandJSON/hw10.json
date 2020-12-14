@@ -1,0 +1,35 @@
+{
+	"Employee": [
+		{
+			"firstname": "Janet",
+			"lastname": "Doe",
+			"profession": "Engineer"
+		},
+		{
+			"firstname": "Anna",
+			"lastname": "Smith",
+			"profession": "Instructor"
+		},
+		{
+			"firstname": "Peter",
+			"lastname": "Jackson",
+			"profession": "Writer"
+		},
+		{
+			"firstname": "Edgard",
+			"lastname": "Lambart",
+			"profession": "Engineer"
+		},
+		{
+			"firstname": "Lucia",
+			"lastname": "Rodriguez",
+			"profession": "Journalist"
+		},
+		{
+			"firstname": "Mark",
+			"lastname": "Douglas",
+			"profession": "Doctor"
+		}
+	]
+}
+
