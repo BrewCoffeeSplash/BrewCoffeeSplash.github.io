@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homework 5, Inline CSS</title>
+  <style>
+    .flex-container {
+      display: flex
+    }
+  </style>
+</head>
+<body style="background-image:url('background.jpg') ;background-color: antiquewhite;">
+  <header>
+    <h1 style="text-align: center; font-style: italic;">
+      The main title
+    </h1>
+  </header>
+
+
+  <section>
+    <header>
+      <h2 style="text-align: center;">Examples of articles and text alignment, with flexbox</h2>
+    </header>
+    <div class="flex-container">
+    <article>
+      <header>
+        <h2 style="text-align: left;">
+          Left Section
+        </h2>
+      </header>
+      <p><span style="font-size: x-small; font-weight: bolder;">Lorem</span> ipsum, dolor sit amet consectetur adipisicing elit. Ratione, praesentium. Consectetur architecto incidunt, beatae natus laudantium suscipit ut ullam iure aspernatur nulla ad qui voluptate autem perferendis. Aut, sint nulla!</p>
+    </article>
+    <article>
+      <header>
+        <h2 style="text-align: center;">
+          Center Section
+        </h2>
+      </header>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione, praesentium. Consectetur architecto incidunt,
+        beatae natus laudantium suscipit ut ullam iure aspernatur nulla ad qui voluptate autem perferendis. Aut, sint nulla!
+      </p>
+    </article>
+    <article>
+      <header>
+        <h2 style="text-align: right;">
+          Right Section 
+        </h2>
+      </header>
+      <p><span style="font-size: larger; font-weight: bold;">Lorem</span> ipsum, dolor sit amet consectetur adipisicing elit. Ratione, praesentium. Consectetur architecto incidunt,
+        beatae natus laudantium suscipit ut ullam iure aspernatur nulla ad qui voluptate autem perferendis. Aut, sint nulla!
+      </p>
+    </article>
+  </div>
+
+  </section>
+  <footer style="background-image: url('wallpaper.jpeg'); background-repeat: repeat-x; border: 4px solid darkblue">
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia repellat placeat incidunt cum, sunt porro ipsa id nesciunt, quo facilis voluptatum, doloribus non! Veritatis eveniet ex at esse animi ipsa?
+    </p>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi aliquam exercitationem iste ullam placeat temporibus, doloribus quae quo saepe aliquid odit, rerum impedit explicabo fugiat non nulla! Necessitatibus, at earum?
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error odit ipsum modi, velit eaque inventore quibusdam.
+      Tenetur voluptatum nulla dignissimos! Quasi, aperiam error! In est culpa, blanditiis esse hic fugit?
+    </p>
+    <p>
+      William Sawyer &copy;
+      <a
+        href="https://validator.w3.org/check?uri=https://brewcoffeesplash.github.io/CNIT_131H_Intro_to_HTML_and_CSS/hw5.html">W3
+        HTML validator</a>
+      <script>
+        var dateModified = document.lastModified;
+        mydate = dateModified.slice(0, 16);
+        document.write("Last updated: " + mydate);
+      </script>
+    </p>
+  </footer>
+</body>
+</html>
