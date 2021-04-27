@@ -55,6 +55,166 @@
 }
 
 
+/*Mountains*/
+
+
+.snow{
+  position: absolute;
+  content: '';
+  bottom: -98px;
+  left: -50px;
+  border-top: opx solid transparent;
+  border-right: 50px solid transparent; /*slant of mountain*/
+  border-bottom: 100px solid gold; /*height of mountain*/
+  border-left: 50px solid transparent; /*slant of mountain*/
+  z-index: 6;
+  filter: blur(.5px);
+
+}
+
+.snow-jagged {
+  position: absolute;
+  content: '';
+  bottom: -135px;
+  left: -40px;
+  border-top: 40px solid gold;
+  border-right: 25px solid transparent; /*slant of mountain*/
+  border-bottom: 0px solid transparent; /*height of mountain*/
+  border-left: 25px solid transparent; /*slant of mountain*/
+  z-index: 6;
+  filter: blur(.5px);
+}
+
+.snow-shadow {
+  position: absolute;
+  content: '';
+  bottom: -87px;
+  left: 0px; /*referenced within mountain div, make 0 */
+  border-top: opx solid transparent;
+  border-right: 35px solid transparent; /*slant of mountain*/
+  border-bottom: 100px solid goldenrod; /*height of mountain*/
+  border-left: 0px solid transparent; /*0 for right-angle triangle*/
+  z-index: 6;
+  transform-origin: top right;
+  transform: skewY(-18deg); /*skewed for the 3D look*/
+  filter: blur(.5px);
+}
+
+.snow-shadow-1{
+  position: absolute;
+  content: '';
+  bottom: -83px;
+  left: 0px; /*referenced within mountain div, make 0 */
+  border-top: opx solid transparent;
+  border-right: 45px solid transparent; /*slant of mountain*/
+  border-bottom: 100px solid goldenrod; /*height of mountain*/
+  border-left: 0px solid transparent; /*0 for right-angle triangle*/
+  z-index: 6;
+  transform-origin: top right;
+  transform: skewY(-18deg); /*skewed for the 3D look*/
+}
+
+.snow-shadow-2{
+  position: absolute;
+  content: '';
+  bottom: -83px;
+  left: 0px; /*referenced within mountain div, make 0 */
+  border-top: opx solid transparent;
+  border-right: 45px solid transparent; /*slant of mountain*/
+  border-bottom: 100px solid goldenrod; /*height of mountain*/
+  border-left: 0px solid transparent; /*0 for right-angle triangle*/
+  z-index: 6;
+  transform-origin: top right;
+  transform: skewY(-18deg); /*skewed for the 3D look*/
+}
+
+.mountain{
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 120px;
+  border-top: opx solid transparent;
+  border-right: 180px solid transparent; /*slant of mountain*/
+  border-bottom: 350px solid #c92b2b; /*height of mountain*/
+  border-left: 180px solid transparent; /*slant of mountain*/
+  z-index: 5;
+  filter: blur(.5px);
+
+}
+
+.mountain-shadow{
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 300px; /*border-left + left from mountain*/
+  border-top: opx solid transparent;
+  border-right: 140px solid transparent; /*slant of mountain*/
+  border-bottom: 350px solid #a82323; /*same as mountain*/
+  border-left: 0px solid transparent; /*0 for right-angle triangle*/
+  z-index: 5;
+  transform-origin: top right;
+  transform: skewX(18deg); /*skewed for the 3D look*/
+  filter: blur(.5px);
+}
+
+
+.mountain-1{
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 70px;
+  border-top: opx solid transparent;
+  border-right: 130px solid transparent; /*slant of mountain*/
+  border-bottom: 250px solid #c92b2b; /*height of mountain*/
+  border-left: 130px solid transparent; /*slant of mountain*/
+  z-index: 5;
+  filter: blur(.5px);
+}
+
+.mountain-shadow-1{
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 200px; /*border-left + left from mountain*/
+  border-top: opx solid transparent;
+  border-right: 130px solid transparent; /*slant of mountain*/
+  border-bottom: 250px solid #a82323; /*same as mountain*/
+  border-left: 0px solid transparent; /*0 for right-angle triangle*/
+  z-index: 5;
+  transform-origin: top right;
+  transform: skewX(18deg); /*skewed for the 3D look*/
+  filter: blur(.5px);
+}
+
+.mountain-2{
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 270px;
+  border-top: opx solid transparent;
+  border-right: 130px solid transparent; /*slant of mountain*/
+  border-bottom: 250px solid #c92b2b; /*height of mountain*/
+  border-left: 130px solid transparent; /*slant of mountain*/
+  z-index: 5;
+  filter: blur(.5px);
+}
+
+.mountain-shadow-2{
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 400px; /*border-left + left from mountain*/
+  border-top: opx solid transparent;
+  border-right: 130px solid transparent; /*slant of mountain*/
+  border-bottom: 250px solid #a82323; /*same as mountain*/
+  border-left: 0px solid transparent; /*0 for right-angle triangle*/
+  z-index: 5;
+  transform-origin: top right;
+  transform: skewX(18deg); /*skewed for the 3D look*/
+  filter: blur(.5px);
+}
+
+
 /*
  * Extra utilities
  */
