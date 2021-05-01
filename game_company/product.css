@@ -20,6 +20,39 @@
   text-decoration: none;
 }
 
+
+/*
+ * Typography styles
+ */
+
+* {
+  font-family: "DM Sans", sans-serif;
+}
+h1 {
+  font-family: "New Tegomin", serif;
+}
+
+
+/*
+ * Section styles
+ */
+
+.game-section {
+  margin: 6rem auto 2rem auto;
+  padding: 3rem 2rem;
+}
+@media (min-width: 1024px) {
+  .game-section {
+    width: 90%;
+  }
+}
+@media (min-width: 1280px) {
+  .game-section {
+    width: 80%;
+  }
+}
+
+
 /*
  * Dummy devices (replace them with your own or something else entirely!)
  */
@@ -55,8 +88,9 @@
 }
 
 
-/*Mountains*/
-
+/*
+ * Mountains
+ */
 
 .snow{
   position: absolute;
