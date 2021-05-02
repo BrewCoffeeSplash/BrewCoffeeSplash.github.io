@@ -162,6 +162,7 @@ h1 {
   transform: skewY(-18deg); /*skewed for the 3D look*/
 }
 
+
 .mountain{
   position: absolute;
   content: '';
@@ -175,6 +176,16 @@ h1 {
   filter: blur(.5px);
 
 }
+
+
+.triangle {
+  width: 200px;
+  height: 200px;
+  background: url(https://goo.gl/BeSyyD);
+
+  /* The points are: centered top, left bottom, right bottom */
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  }
 
 .mountain-shadow{
   position: absolute;
