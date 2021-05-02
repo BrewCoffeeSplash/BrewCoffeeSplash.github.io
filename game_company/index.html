@@ -6,7 +6,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
-  <meta name="author" content="Created by: Catherine C., Dan Dewitt, and William Sawyer, Original Template by:Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="author"
+    content="Created by: Catherine C., Dan Dewitt, and William Sawyer, Original Template by:Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <title>Gold Mountain Games</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/product/">
@@ -43,7 +44,6 @@
         font-size: 3.5rem;
       }
     }
-    
   </style>
 
 
@@ -52,103 +52,35 @@
 </head>
 
 <body>
-  
-  <nav class="site-header sticky-top py-2 navbar navbar-expand-lg navbar-dark bg-dark px-3">
-    <a class="navbar-brand" href="index.html">GMG</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about.html">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="games.html">Our Games</a>
-        </li>
-      </ul>
+
+  <nav class="site-header sticky-top navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">GMG</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="games.html">Our Games</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 
-  <!--
-    <header class="site-header sticky-top py-1 ">
-    <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
-      <div class="dropdown">
-        <a href="#" class="d-flex align-items-center col-lg-1 mb-2 mb-lg-0 link-dark text-decoration-none dropdown-toggle" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="none" stroke="currentColor"
-            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img"
-            viewBox="0 0 24 24">
-            <title>Product</title>
-            <circle cx="12" cy="12" r="10" />
-            <path
-              d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
-          </svg>
-        </a>
-        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownNavLink" style="">
-          <li><a class="dropdown-item active" href="./index.html">Overview</a></li>
-          <li><a class="dropdown-item" href="#">Products</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="./about.html">About</a></li>
-          <li><a class="dropdown-item" href="#">Contact Us</a></li>
-        </ul>
-      </div>
-
-      <div class="d-flex align-items-center">
-        <form class="w-100 me-3">
-          <input type="search" class="form-control" placeholder="Search...">
-        </form>
-
-        <div class="flex-shrink-0 dropdown">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2" style="">
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </header>
-  -->
-  
-  <!-- <header class="site-header sticky-top py-1">
-    <nav class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2" href="#" aria-label="Product">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
-          stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img"
-          viewBox="0 0 24 24">
-          <title>Product</title>
-          <circle cx="12" cy="12" r="10" />
-          <path
-            d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
-        </svg>
-      </a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Tour</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Product</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Enterprise</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Support</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
-    </nav>
-  </header> -->
-
   <main>
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
+    <div class="container-fluid position-relative overflow-hidden p-3 p-md-1 m-md-3 text-center">
       <div class="row">
-        <div class="col-md-7 p-lg-5 my-5 offset-md-5">
-          <h1 class="display-4 fw-normal">Gold Mountain Games</h1>
-          <p class="lead fw-normal">an independent San Francisco gaming collective</p>
-          <a class="btn btn-outline-secondary" href="#">Our Games</a>
-        </div>
         <!-- Mountains -->
-        <div>
+        <div class="d-none d-lg-block  col-md-6 p-lg-1 my-1 offset-md-5">
           <div class="mountain">
             <div class="snow"></div>
             <div class="snow-jagged"></div>
@@ -156,14 +88,14 @@
           <div class="mountain-shadow">
             <div class="snow-shadow"></div>
           </div>
-          
+        
           <div class="mountain-1">
             <div class="snow"></div>
           </div>
           <div class="mountain-shadow-1">
             <div class="snow-shadow-1"></div>
           </div>
-          
+        
           <div class="mountain-2">
             <div class="snow"></div>
           </div>
@@ -171,6 +103,13 @@
             <div class="snow-shadow-2"></div>
           </div>
         </div>
+        <div class="col-md-6 p-lg-5 my-5 offset-md-5">
+          <h1 class="display-4 fw-normal">Gold Mountain Games</h1>
+          <p class="lead fw-normal">an independent San Francisco gaming collective</p>
+          <a class="btn btn-outline-secondary" href="#">Our Games</a>
+        </div>
+<!-- <div class="triangle"></div> -->
+
       </div>
     </div>
 
@@ -178,10 +117,13 @@
       <div class="row">
         <div class="col-lg-4">
           <h2 class="display-6">Covid Runner</h2>
-          <a href="#"><p class="lead">Play Full Game</p></a>
+          <a href="#">
+            <p class="lead">Play Full Game</p>
+          </a>
         </div>
         <div class="col-lg-8">
-          <iframe src="https://hills.ccsf.edu/~ddewitt3/games/GGBridgeLevel/index.html" name="iFrame Name" scrolling="No" height="300px" width="100%" style="border: none;"></iframe>
+          <iframe src="https://hills.ccsf.edu/~ddewitt3/games/GGBridgeLevel/index.html" name="iFrame Name"
+            scrolling="No" height="300px" width="100%" style="border: none;"></iframe>
         </div>
       </div>
     </div>
@@ -270,17 +212,18 @@
       <div class="col-6 col-md">
         <h5>About</h5>
         <ul class="list-unstyled text-small">
-          <li><a class="link-secondary" href="#">Team</a></li>
+          <li><a class="link-secondary" href="./about.html">Team</a></li>
         </ul>
       </div>
     </div>
   </footer>
 
-<!-- Optional JavaScript -->
+  <!-- Optional JavaScript -->
 
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"></script>
 
 
 </body>
