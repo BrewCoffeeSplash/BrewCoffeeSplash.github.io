@@ -110,20 +110,20 @@ h1 {
   position: absolute;
   content: '';
   bottom: 0;
-  left: 135px;
+  left: 120px;
   border-top: opx solid transparent;
   border-right: 100px solid transparent; /*slant of mountain*/
   border-bottom: 200px solid #c92b2b; /*height of mountain*/
   border-left: 100px solid transparent; /*slant of mountain*/
   z-index: 5;
-  filter: blur(.1px);
+  filter: blur(.5px);
 }
 
 .mountain-shadow{
   position: absolute;
   content: '';
   bottom: 0;
-  left: 235px; /*border-left + left from mountain*/
+  left: 220px; /*border-left + left from mountain*/
   border-top: opx solid transparent;
   border-right: 100px solid transparent; /*slant of mountain*/
   border-bottom: 200px solid #a82323; /*same as mountain*/
@@ -131,7 +131,7 @@ h1 {
   z-index: 5;
   transform-origin: top right;
   transform: skewX(18deg); /*skewed for the 3D look*/
-  filter: blur(.1px);
+  filter: blur(.5px);
 }
 
 .snow{
@@ -159,7 +159,7 @@ h1 {
   z-index: 6;
   transform-origin: top right;
   transform: skewY(-15deg); /*skewed for the 3D look*/
-  filter: blur(.1px);
+  filter: blur(.5px);
 }
 
 .mountain-1{
@@ -169,7 +169,7 @@ h1 {
   left: 10px;
   border-top: opx solid transparent;
   border-right: 100px solid transparent; /*slant of mountain*/
-  border-bottom: 180px solid #c92b2b; /*height of mountain*/
+  border-bottom: 150px solid #c92b2b; /*height of mountain*/
   border-left: 100px solid transparent; /*slant of mountain*/
   z-index: 5;
   filter: blur(.5px);
@@ -182,7 +182,7 @@ h1 {
   left: 110px; /*border-left + left from mountain*/
   border-top: opx solid transparent;
   border-right: 100px solid transparent; /*slant of mountain*/
-  border-bottom: 180px solid #a82323; /*same as mountain*/
+  border-bottom: 150px solid #a82323; /*same as mountain*/
   border-left: 0px solid transparent; /*0 for right-angle triangle*/
   z-index: 5;
   transform-origin: top right;
@@ -194,11 +194,11 @@ h1 {
   position: absolute;
   content: '';
   bottom: -98px;
-  left: -55px;
+  left: -66px;
   border-top: opx solid transparent;
-  border-right: 50px solid transparent; /*slant of mountain*/
+  border-right: 35px solid transparent; /*slant of mountain*/
   border-bottom: 100px solid gold; /*height of mountain*/
-  border-left: 55px solid transparent; /*slant of mountain*/
+  border-left: 66px solid transparent; /*slant of mountain*/
   z-index: 6;
   filter: blur(.5px);
 }
@@ -206,10 +206,10 @@ h1 {
 .snow-shadow-1{
   position: absolute;
   content: '';
-  bottom: -83px;
+  bottom: -81px;
   left: 0px; /*referenced within mountain div, make 0 */
   border-top: opx solid transparent;
-  border-right: 47px solid transparent; /*slant of mountain*/
+  border-right: 53px solid transparent; /*slant of mountain*/
   border-bottom: 100px solid goldenrod; /*height of mountain*/
   border-left: 0px solid transparent; /*0 for right-angle triangle*/
   z-index: 6;
@@ -224,7 +224,7 @@ h1 {
   left: 220px;
   border-top: opx solid transparent;
   border-right: 100px solid transparent; /*slant of mountain*/
-  border-bottom: 180px solid #c92b2b; /*height of mountain*/
+  border-bottom: 140px solid #c92b2b; /*height of mountain*/
   border-left: 100px solid transparent; /*slant of mountain*/
   z-index: 5;
   filter: blur(.5px);
@@ -237,7 +237,7 @@ h1 {
   left: 320px; /*border-left + left from mountain*/
   border-top: opx solid transparent;
   border-right: 100px solid transparent; /*slant of mountain*/
-  border-bottom: 180px solid #a82323; /*same as mountain*/
+  border-bottom: 140px solid #a82323; /*same as mountain*/
   border-left: 0px solid transparent; /*0 for right-angle triangle*/
   z-index: 5;
   transform-origin: top right;
@@ -249,11 +249,11 @@ h1 {
   position: absolute;
   content: '';
   bottom: -98px;
-  left: -60px;
+  left: -70px;
   border-top: opx solid transparent;
-  border-right: 60px solid transparent; /*slant of mountain*/
+  border-right: 50px solid transparent; /*slant of mountain*/
   border-bottom: 100px solid gold; /*height of mountain*/
-  border-left: 60px solid transparent; /*slant of mountain*/
+  border-left: 70px solid transparent; /*slant of mountain*/
   z-index: 6;
   filter: blur(.5px);
 }
@@ -261,10 +261,10 @@ h1 {
 .snow-shadow-2{
   position: absolute;
   content: '';
-  bottom: -83px;
+  bottom: -80px;
   left: 0px; /*referenced within mountain div, make 0 */
   border-top: opx solid transparent;
-  border-right: 46px solid transparent; /*slant of mountain*/
+  border-right: 57px solid transparent; /*slant of mountain*/
   border-bottom: 100px solid goldenrod; /*height of mountain*/
   border-left: 0px solid transparent; /*0 for right-angle triangle*/
   z-index: 6;
