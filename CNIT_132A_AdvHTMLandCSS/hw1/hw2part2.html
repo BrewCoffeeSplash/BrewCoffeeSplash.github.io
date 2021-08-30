@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Working with Flexbox from CNIT 132A at CCSF">
+	<meta name="keywords" content="CNIT 132a, CCSF, HTML, CSS, JavaScript, Flexbox">
+	<meta name="author" content="William Sawyer">
+	<title>Working with Flexbox</title>
+	<style>
+		h1 {
+			margin: 0px;
+		}
+
+		p {
+			margin: 0px;
+		}
+
+		.flex-container-head {
+			display: flex;
+			justify-content: center;
+			/* align-items: stretch; */
+			/* flex-direction: column; */
+		}
+
+		.flex-container-main {
+			display: flex;
+			/* flex-wrap: nowrap; */
+			background-color: black;
+			align-items: center;
+		}
+
+		.flex-container-footer {
+			display: flex;
+			justify-content: center;
+		}
+
+		.flex-container-head>div {
+			/* margin: 10px; */
+			flex: 1 1 auto;
+
+		}
+
+		.flex-container-main>div {
+			/* margin: 10px; */
+			flex: 1 1 auto;
+height: auto;
+
+		}
+
+		.flex-container-footer>div {
+			/* margin: 10px; */
+			flex: 1 1 auto;
+
+		}
+
+
+
+		.aside1,
+		.aside2,
+		.footer,
+		.header,
+		.main-content,
+		.second-content {
+			text-align: center;
+			font-weight: bold;
+		}
+
+		.header {
+			background-color: salmon;
+		}
+
+		.main-content {
+			background-color: darkblue;
+			color: white;
+		}
+
+		.second-content {
+			background-color: violet;
+			color: blue;
+		}
+
+		.aside1 {
+			background-color: yellow;
+		}
+
+		.aside2 {
+			background-color: pink;
+		}
+
+		.footer {
+			background-color: lightgreen;
+		}
+	</style>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-G5SD8GYX6K');
+	</script>
+</head>
+
+<body>
+	<main>
+		<div class="flex-container-head">
+			<div class="flex-item">
+				<header class="header">
+					<h1>Name of Company</h1>
+				</header>
+			</div>
+		</div>
+		<main>
+			<div class="flex-container-main">
+				<div class="flex-item">
+					<aside class="aside1">
+						<p>This is the aside 1</p>
+					</aside>
+				</div>
+				<div class="flex-item">
+					<article class="main-content">
+						<p>This is the main article of my page! This is the main content of the page. In a 3-column layout, it
+							should be
+							shown in the middle between the aside 1 and aside 2!</p>
+					</article>
+				</div>
+				<div class="flex-item">
+					<article class="second-content">
+						<p>This column was created to have some content as a challenge to adapt the old 3-column layout to a
+							4-column
+							layout</p>
+					</article>
+				</div>
+				<div class="flex-item">
+					<aside class="aside2">
+						<p>This is the aside 2</p>
+					</aside>
+				</div>
+			</div>
+		</main>
+		<div class="flex-container-footer">
+			<div class="flex-item">
+				<footer class="footer">
+					<p>This is the footer</p>
+					<p>Copyright &#169;
+						2017</p>
+				</footer>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

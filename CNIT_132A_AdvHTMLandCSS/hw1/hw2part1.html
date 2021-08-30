@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Working with grids in CNIT 132A at CCSF">
+	<meta name="keywords" content="CNIT 132a, CCSF, HTML, CSS, JavaScript, Grids">
+	<meta name="author" content="William Sawyer">
+	<title>Working with Grids</title>
+	<style>
+		/* remove all empty space */
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		.page-layout {
+			display: grid;
+
+			/* grid-template-columns: 1fr 1fr 1fr 1fr; 
+				 grid-template-rows: 100vh;  */
+			/* grid-template-columns: 1fr; */
+			/* align-content: center; */
+			/* align-items: center; */
+
+			/* full screen view height and width */
+			height: 100vh;
+			width: 100vw;
+
+			/* grid-auto-rows: 1fr; */
+			/* grid-auto-columns: auto; */
+
+			/* [row1-start]".search" ".links"[row1-end]
+			[row2-start]".messages" ".news"[row2-end] */
+			grid-template:
+				"search links"
+				"messages news";
+		}
+
+		.news {
+			grid-area: news
+		}
+
+		.links {
+			grid-area: links
+		}
+
+		.search {
+			grid-area: search
+		}
+
+		.messages {
+			grid-area: messages
+		}
+
+		.news,
+		.links,
+		.search,
+		.messages {
+			text-align: center;
+			font-weight: bold;
+			justify-self: stretch
+		}
+
+		.news {
+			background-color: cyan;
+		}
+
+		.links {
+			background-color: orange;
+		}
+
+		.search {
+			background-color: violet;
+		}
+
+		.messages {
+			background-color: red;
+		}
+	</style>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() { dataLayer.push(arguments); }
+			gtag('js', new Date());
+
+			gtag('config', 'G-G5SD8GYX6K');
+		</script>
+</head>
+
+<body>
+	<div class="page-layout">
+		<div class="news">News</div>
+		<div class="links">Links</div>
+		<div class="search">Search</div>
+		<div class="messages">Messages</div>
+	</div>
+</body>
+
+</html>
