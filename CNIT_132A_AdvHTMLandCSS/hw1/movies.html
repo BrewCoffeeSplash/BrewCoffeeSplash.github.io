@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Working with grids in CNIT 132A at CCSF">
+  <meta name="keywords" content="CNIT 132a, CCSF, HTML, CSS, JavaScript, Grids">
+  <meta name="author" content="William Sawyer">
+  <title>Great movie titles</title>
+  <style>
+    body {
+      background-color: #DEB887;
+      color: #121212;
+    }
+
+    header {
+      width: 60%;
+      background-image: url(banner.png);
+      margin: 0 auto;
+      text-align: center;
+      box-shadow: 5px 5px 5px gray;
+      font-size: 1.5rem;
+      color: #291b0a;
+    }
+
+    h1,
+    h2 {
+      background-color: rgba(214, 169, 117, 0.8);
+    }
+
+    div {
+      width: 80%;
+      margin: 0 auto;
+      border: 2px solid #572a0a;
+      padding: 0 10px;
+    }
+
+    footer {
+      width: 60%;
+      margin: 10px auto;
+      padding: 3px 0;
+      text-align: center;
+      background-color: #6b4000;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    footer img {
+      float: left;
+      margin: 0 5px 5px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Great Movies</h1>
+    <h2>Great Directors</h2>
+  </header>
+  <div itemscope itemtype="https://schema.org/Movie" role="article">
+    <h3 itemprop="name">Avatar</h3>
+    <p itemprop="director" itemscope itemtype="https://schema.org/Person">Director:
+      <span itemprop="name">James Cameron</span>
+      <span itemprop="birthDate">(born August 16, 1954)</span>
+    </p>
+    <p itemprop="genre">Type: Science fiction</p>
+    <p itemprop="datePublished">Release Date: December 18, 2009</p>
+  </div>
+  <div itemscope itemtype="https://schema.org/Movie" role="article">
+    <h3 itemprop="name">Star Wars: Episode VII</h3>
+    <p itemprop="director" itemscope itemtype="https://schema.org/Person">Director:
+      <span itemprop="name">J. J. Abrams</span>
+      <span itemprop="birthDate">(born June 27, 1966)</span>
+    </p>
+    <p itemprop="genre">Type: Science fiction</p>
+    <p itemprop="datePublished">Release Date: December 18, 2015</p>
+  </div>
+  <div itemscope itemtype="https://schema.org/Movie" role="article">
+    <h3 itemprop="name">Titanic</h3>
+    <p itemprop="director" itemscope itemtype="https://schema.org/Person">Director:
+      <span itemprop="name">James Cameron</span>
+      <span itemprop="birthDate">(born August 16, 1954)</span>
+    </p>
+    <p itemprop="genre">Type: Drama</p>
+    <p itemprop="datePublished">Release Date: December 19, 1997</p>
+  </div>
+  <div itemscope itemtype="https://schema.org/Movie" role="article">
+    <h3 itemprop="name">Schindler's List</h3>
+    <p itemprop="director" itemscope itemtype="https://schema.org/Person">Director:
+      <span itemprop="name">Steven Spielberg</span>
+      <span itemprop="birthDate">(born December 18, 1946)</span>
+    </p>
+    <p itemprop="genre">Type: Drama</p>
+    <p itemprop="datePublished">Release Date: December 15, 1993</p>
+  </div>
+  <footer>
+    <img src="movielogo.png" alt="movie logo">
+    <p>List made by CNIT 132A class at CCSF</p>
+    <p>Copyright &copy; 2017</p>
+  </footer>
+</body>
+
+</html>
