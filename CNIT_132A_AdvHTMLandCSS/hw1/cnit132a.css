@@ -161,7 +161,7 @@ main a[href$="pdf"]::after {
 ;
   }
   100% {
-    transform: translate(calc(50% - 6.5vw));
+    transform: translate(calc(50% - 5vw));
 ;
   }
 }
