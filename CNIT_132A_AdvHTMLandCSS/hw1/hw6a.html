@@ -85,14 +85,15 @@
       <p class="banner">FLY WITH US, WE ARE SAFE</p>
 
     </div>
-    <button type="checkbox" id="btnCheck" class="button">click me to animate</button>
+    <button type="button" id="btnCheck" class="button">click me to animate</button>
   </main>
+  <script>
+    $("#btnCheck").click(function () {
+      $('.banner').toggleClass('banner-active');
+      $('.sky').toggleClass('sky-active');
+    });
+  </script>
 </body>
-<script>
-  $("#btnCheck").click(function () {
-    $('.banner').toggleClass('banner-active');
-    $('.sky').toggleClass('sky-active');
-  });
-</script>
+
 
 </html>
