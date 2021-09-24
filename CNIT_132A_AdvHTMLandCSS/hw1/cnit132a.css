@@ -136,6 +136,7 @@ main a[href$="pdf"]::after {
 /* airlines page */
 .airlines {
   background-color: #C0DEED;
+  background-image: none;
 }
 
 @keyframes rolling {
@@ -235,11 +236,13 @@ main a[href$="pdf"]::after {
 
 /* house page */
     .housepage {
-      font: 1em Helvetica, Arial, sans-serif;
       background-color: beige;
+      background-image: none;
+      /* height: 100%; */
+      /* overflow: hidden; */
     }
 
-    .content {
+    .house-content {
       max-width: 1000px;
       margin: 10px auto;
     }
