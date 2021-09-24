@@ -1,1 +1,278 @@
-body{background:url("./images/COLOURlovers.com-d_u_s_k.png") no-repeat center fixed;background-size:cover}.header-logo{font-size:28px;font-family:"Satisfy",cursive;padding:5px}.header-logo :hover{color:#ddd2c2;transition:0.7s color;text-decoration:underline}nav{box-shadow:3px 3px 3px #e2decd;margin:0px;padding:0px}.navbar-nav a,li{color:#ddd2c2 !important}.navbar-text{color:#ddd2c2 !important}.navbar-custom .nav-item :hover{transition:0.7s color;color:red !important }.class-title{color:#ddd2c2;font-family:"Satisfy",cursive;font-size:28px;text-align:right;padding:5px;margin:0px}.container{color:#ddd2c2;background:#5e5b5b;border-bottom:1px solid #ab9a89}.sectionstyle{margin-bottom:20px;background-color:#5e5b5b;color:#e9e5d5;border:1px solid #ab9a89;box-shadow:1px 1px 1px 1px #e9e5d5}.sectionstyle2{margin-bottom:1px;background-color:#5e5b5b;color:#e9e5d5;border-bottom:1px solid #ab9a89}.table1 tbody{box-shadow:1px 1px #e9e5d5}.table1 a{color:#f7f7f4}.footer{background:#655e5d;color:#ddd2c2;text-align:center}footer a{color:#ddd2c2;text-decoration:underline;text-align:center}.foot-pic{width:120px;height:60px;border:0 none}.red-text{color:rgb(255,103,103)}.blue-text{color:rgb(182, 182, 233)}main a:not([href$="html"])::after, main a:not([href$="htm"])::after, main a:not([href$="pdf"])::after{content:url("./images/intmark.png")}main a[href$="htm"]::after, main a[href$="html"]::after{content:url("./images/browser.png");display:block}main a[href$="pdf"]::after{content:url("./images/pdf.png")}
+body {
+  background: url("./images/COLOURlovers.com-d_u_s_k.png") no-repeat center
+    fixed;
+  background-size: cover;
+}
+
+/* Navbar */
+.header-logo {
+  font-size: 28px;
+  font-family: "Satisfy", cursive;
+  padding: 5px;
+}
+
+.header-logo :hover {
+  color: #ddd2c2;
+  transition: 0.7s color;
+  text-decoration: underline;
+}
+
+nav {
+  box-shadow: 3px 3px 3px #e2decd;
+  margin: 0px;
+  padding: 0px;
+}
+
+.navbar-nav a,
+li {
+  color: #ddd2c2 !important;
+}
+
+.navbar-text {
+  color: #ddd2c2 !important;
+}
+
+/* .navbar-text :hover {
+  transition: .7s color;
+  color: red !important ;
+} */
+
+.navbar-custom .nav-item :hover {
+  transition: 0.7s color;
+  color: red !important ;
+}
+.class-title {
+  color: #ddd2c2;
+  font-family: "Satisfy", cursive;
+  font-size: 28px;
+  text-align: right;
+  padding: 5px;
+  margin: 0px;
+}
+/* End-Navbar */
+
+.container {
+  color: #ddd2c2;
+  background: #5e5b5b;
+  border-bottom: 1px solid #ab9a89;
+}
+
+.sectionstyle {
+  margin-bottom: 20px;
+  background-color: #5e5b5b;
+  color: #e9e5d5;
+  border: 1px solid #ab9a89;
+  box-shadow: 1px 1px 1px 1px #e9e5d5;
+}
+.sectionstyle2 {
+  margin-bottom: 1px;
+  background-color: #5e5b5b;
+  color: #e9e5d5;
+  border-bottom: 1px solid #ab9a89;
+}
+
+/* .list-group-item  :hover {
+	background-color: blue !important;
+	color: red;
+} */
+
+.table1 tbody {
+  box-shadow: 1px 1px #e9e5d5;
+}
+
+.table1 a {
+  color: #f7f7f4;
+  /* background-color: #5E5B5B; */
+}
+
+/* Footer */
+/* footer {
+  background: #655E5D ;
+  color: #DDD2C2;
+
+} */
+
+.footer {
+  background: #655e5d;
+  color: #ddd2c2;
+  text-align: center;
+}
+
+footer a {
+  color: #ddd2c2;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.foot-pic {
+  width: 120px;
+  height: 60px;
+  border: 0 none;
+}
+
+.red-text {
+  color: rgb(255, 103, 103);
+}
+
+.blue-text {
+  color: rgb(182, 182, 233);
+}
+
+/* link selectors */
+/* must be first to be overriden by later link selectors */
+main a:not([href$="html"])::after, main a:not([href$="htm"])::after, main a:not([href$="pdf"])::after {
+  content: url("./images/intmark.png");
+}
+
+main a[href$="htm"]::after,
+main a[href$="html"]::after {
+  content: url("./images/browser.png");
+  display: block;
+}
+main a[href$="pdf"]::after {
+  content: url("./images/pdf.png");
+}
+
+/* airlines page */
+.airlines {
+  background-color: #C0DEED;
+}
+
+@keyframes rolling {
+  /* 0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-2247px, 0, 0);
+  } */
+    100% {
+      background-position:  -2247px 0px;
+    }
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translate(0%)
+  }
+  50% {
+    transform: translate(calc(100% - 15vw)) skew(180deg) scaleY(5);
+;
+  }
+  100% {
+    transform: translate(calc(50% - 6.5vw));
+;
+  }
+}
+
+.sky {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+
+  /* width: 6741px; */
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: #C0DEED;
+  background: url(clouds.png) center top repeat-x;
+  padding-top: 300px;
+  padding-bottom: 10px;
+  overflow: hidden;
+}
+
+.sky-active {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+
+  /* width: 6741px; */
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: #C0DEED;
+  background: url(clouds.png) center top repeat-x;
+  padding-top: 300px;
+  padding-bottom: 10px;
+  overflow: hidden;
+  animation: rolling 30s linear infinite;
+}
+
+.airlinetitle {
+  text-align: center;
+  /* margin: 0px; */
+  /* padding: 0px; */
+}
+
+
+.airplane {
+  display: block;
+  margin: auto;
+
+}
+
+.banner {
+  /* position: relative; */
+    /* overflow: hidden; */
+  /* margin: 0px; */
+  /* padding: 0px; */
+  text-align: center;
+}
+
+.banner-active{
+  text-align:left;
+  animation: scrolling 3s linear forwards;
+
+}
+
+.button {
+  background-color: red;
+  display: block;
+  margin: auto;
+}
+
+/* house page */
+    .housepage {
+      font: 1em Helvetica, Arial, sans-serif;
+      background-color: beige;
+    }
+
+    .content {
+      max-width: 1000px;
+      margin: 10px auto;
+    }
+
+    .house {
+      float: left;
+      shape-outside: url(./house.png);
+      shape-margin: 5px;
+    }
+
+
+/* main a::after {
+  content: url("./images/intmark.png");
+} */
+/* main a:not([href$="html"]) ::after {
+  content: url("./images/intmark.png");
+  display: block;
+} */
+/* a ::after {
+  content: url("./images/pdf.png");
+} */
+/* main   :not(a[href$="html"],
+a[href$="htm"], a[href$="pdf"]), main a[href=""] ::after{
+  content: url("./images/intmark.png");
+  display: block;
+} */
+/* main a :not([href*="html"]) ::after {
+  content: url("./images/intmark.png");
+} */
+
+/* main  :not(a[href$="html"]), :not(a[href$="htm"]), :not(a[href$="pdf"]) ::after {
+  content: url("./images/intmark.png");
+} */
+/* main  a:not([href*="html"]), a:not([href$="htm"]), a:not([href$="pdf"]) ::after {
+  content: url("./images/intmark.png");
+} */

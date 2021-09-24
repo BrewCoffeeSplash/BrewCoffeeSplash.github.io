@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="generator"
+    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+  <!-- Required meta tags -->
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description"
+    content="airplane flying with CSS3 animation from lessons learned while in CNIT 132a at CCSF">
+  <meta name="keywords"
+    content="learning web development, web development tools, CNIT 132a, CNIT , CCSF, HTML, CSS, JavaScript">
+  <meta name="author" content="William Sawyer">
+  <title>CNIT 132A Advanced HTML and CSS Flying Plane</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Font for navbar logo -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy" />
+  <link rel="stylesheet" href="cnit132a.css" />
+  <!-- For various icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <!--Bootstrap Reqs -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://use.fontawesome.com/187c6f48ba.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5SD8GYX6K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-G5SD8GYX6K');
+  </script>
+
+<body class="airlines">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-custom justify-content-between">
+    <a class="navbar-brand">
+      <div class="header-logo navbar-left">
+        <span class="blue-text">William</span>
+        <span class="red-text">Sawyer</span></div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="./cnit132a.html">Home</a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="./assignments.html">Assignments</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="./tips_and_tricks.html">Tips and Tricks</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="./SEO_Strategies.html">SEO Strategies</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="./Analytics_Report.html">Analytics Report</a>
+        </li>
+      </ul>
+      <span class="navbar-text class-title nav-color mr-sm-2">CNIT 132A Advanced HTML and CSS</span>
+    </div>
+  </nav>
+  <main>
+    <div id="sky" class="sky">
+      <h1 class="airlinetitle">Whoosh Airlines</h1>
+
+      <img src="./plane.png" alt="cartoon airplane" class="airplane">
+      <p class="banner">FLY WITH US, WE ARE SAFE</p>
+
+    </div>
+    <button type="checkbox" id="btnCheck" class="button">click me to animate</button>
+  </main>
+</body>
+<script>
+  $("#btnCheck").click(function () {
+    $('.banner').toggleClass('banner-active');
+    $('.sky').toggleClass('sky-active');
+  });
+</script>
+
+</html>
