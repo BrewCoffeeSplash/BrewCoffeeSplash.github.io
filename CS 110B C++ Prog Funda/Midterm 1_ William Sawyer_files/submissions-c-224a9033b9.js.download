@@ -1,0 +1,341 @@
+(window["canvasWebpackJsonp"]=window["canvasWebpackJsonp"]||[]).push([[539],{"J+og":function(e,i,t){"use strict"
+t.r(i)
+var n=t("ejBJ")
+var s=t("rWGD")
+var a=t("ouhR")
+var o=t.n(a)
+var r=t("vI2V")
+t("jYyc")
+t("Z+Ib")
+t("UlQx")
+t("p6Wi")
+t("7LJr")
+t("OShF")
+t("iBIV")
+t("7WS/")
+t("s/PJ")
+t("IZD0")
+const l=ENV.rubricAssessments
+o()("#content").addClass("padless")
+let d=1
+function c(e){if(e.submission){const i=[]
+i.push(e)
+e=i}for(var i in e){const t=e[i].submission
+const n=t.visible_submission_comments||t.submission_comments
+const s=ENV.SUBMISSION.user_id?"user_id":"anonymous_id"
+if(t[s].toString()!==ENV.SUBMISSION[s])continue
+for(const e in n){const t=n[e].submission_comment||n[e]
+if(o()("#submission_comment_"+t.id).length>0)continue
+const s=o()("#comment_blank").clone(true).removeAttr("id")
+t.posted_at=o.a.datetimeString(t.created_at)
+s.fillTemplateData({data:t,id:"submission_comment_"+t.id})
+if(t.media_comment_id){const e=o()("#comment_media_blank").clone(true).removeAttr("id")
+e.fillTemplateData({data:t})
+s.find(".comment").empty().append(e.show())}else for(var i in t.attachments){const e=t.attachments[i].attachment
+const n=o()("#comment_attachment_blank").clone(true).removeAttr("id")
+e.comment_id=t.id
+n.fillTemplateData({data:e,hrefValues:["comment_id","id"]})
+s.find(".comment_attachments").append(n.show())}o()(".comments .comment_list").append(s.show()).scrollTop(1e4)
+o()(".grading_comment").val()===t.comment&&o()(".grading_comment").val("")}o()(".comments .comment_list .play_comment_link").mediaCommentThumbnail("small")
+o()(".save_comment_button").attr("disabled",null)
+if(t){g(t)
+o()(".submission_details").fillTemplateData({data:t})
+o()("#add_comment_form .comment_attachments").empty()}}o()(".submission_header").loadingImage("remove")}function _(e,i){return null==e?"":i.call(this,e)}function u(e){return s["a"].n(Object(n["a"])(e,n["a"].DEFAULT))}function g(e){["pass","fail","complete","incomplete"].indexOf(e.entered_grade)>-1?o()(".grading_box").val(e.entered_grade):o()(".grading_box").val(_(e.entered_grade,r["a"].formatGrade))
+o()(".late_penalty").text(_(-e.points_deducted,u))
+o()(".published_grade").text(_(e.published_grade,r["a"].formatGrade))
+o()(".grade").text(_(e.grade,r["a"].formatGrade))
+e.excused?o()(".entered_grade").text(s["a"].t("Excused")):o()(".entered_grade").text(_(e.entered_grade,r["a"].formatGrade))
+!e.excused&&e.points_deducted?o()(".late-penalty-display").show():o()(".late-penalty-display").hide()}function f(e){e.show()
+const i=e.find(":tabbable")
+const t=[i.first()[0],i.last()[0]]
+const n={9:"tab",13:"enter",27:"esc"}
+o()(".hide_rubric_link").keydown((function(e){if("enter"==n[e.which]){e.preventDefault()
+o()(this).click()}}))
+i.each((function(){o()(this).bind("keydown",e=>{"esc"==n[e.which]&&o()(".hide_rubric_link").click()})}))
+o()(t).each((function(e){o()(this).bind("keydown",(function(e){if("tab"==n[e.which]){const i=o()(this).is(o()(t).first())?e.shiftKey:!e.shiftKey
+if(i){e.preventDefault()
+const i=this
+const n=o.a.grep(t,e=>e!=i)
+o()(n).focus()}}}))}))
+e.siblings().attr("data-hide_from_rubric",true).end().parentsUntil("#application").siblings().not("#aria_alerts").attr("data-hide_from_rubric",true)
+e.hide()}function m(e){const i=e.is(":visible")
+o()("#application").find("[data-hide_from_rubric]").attr("aria-hidden",i)}function h(){o()("#rubric_holder").fadeOut((function(){m(o()(this))
+o()(".assess_submission_link").focus()}))}function p(){o()("#rubric_holder").fadeIn((function(){m(o()(this))
+o()(this).find(".hide_rubric_link").focus()}))}function b(){const e=o()("#preview_frame")
+const i=e.offset().top
+const t=o()(window).height()-i
+e.height(t)
+o()("#rubric_holder").css({maxHeight:t-50,overflow:"auto",zIndex:5})
+o()(".comments").height(t)}function v(){o()(document).ready((function(){o()(".comments .comment_list .play_comment_link").mediaCommentThumbnail("small")
+o()(window).bind("resize",b).triggerHandler("resize")
+o()(".comments_link").click(e=>{e.preventDefault()
+o()(".comments").slideToggle(()=>{o()(".comments .media_comment_content").empty()
+o()(".comments textarea:visible").focus().select()})})
+o()(".save_comment_button").click(e=>{o()(document).triggerHandler("comment_change")})
+o()(document).bind("comment_change",e=>{o()(".save_comment_button").attr("disabled","disabled")
+o()(".submission_header").loadingImage()
+const i=o()(".update_submission_url").attr("href")
+const t=o()(".update_submission_url").attr("title")
+const n={"submission[assignment_id]":ENV.SUBMISSION.assignment_id,"submission[group_comment]":o()("#submission_group_comment").attr("checked")?"1":"0"}
+const a=ENV.SUBMISSION.user_id?"user_id":"anonymous_id"
+n["submission[".concat(a,"]")]=ENV.SUBMISSION[a]
+if(o()("#media_media_recording:visible").length>0){const e=o()("#media_media_recording").data("comment_id")
+const i=o()("#media_media_recording").data("comment_type")
+n["submission[media_comment_type]"]=i||"video"
+n["submission[media_comment_id]"]=e}else{o()(".grading_comment").val()&&""!=o()(".grading_comment").val&&(n["submission[comment]"]=o()(".grading_comment").val())
+!n["submission[comment]"]&&o()("#add_comment_form input[type='file']").length>0&&(n["submission[comment]"]=s["a"].t("see_attached_files","See attached files"))}if(!n["submission[comment]"]&&!n["submission[media_comment_id]"]){o()(".submission_header").loadingImage("remove")
+o()(".save_comment_button").attr("disabled",null)
+return}o()("#add_comment_form input[type='file']").length>0?o.a.ajaxJSONFiles(i+".text",t,n,o()("#add_comment_form input[type='file']"),c):o.a.ajaxJSON(i,t,n,c)})
+o()(".cancel_comment_button").click(e=>{o()(".grading_comment").val("")
+o()(".comments_link").click()})
+o()(".grading_value").change(e=>{o()(document).triggerHandler("grading_change")})
+o()(document).bind("grading_change",e=>{o()(".save_comment_button").attr("disabled","disabled")
+o()(".submission_header").loadingImage()
+const i=o()(".update_submission_url").attr("href")
+const t=o()(".update_submission_url").attr("title")
+const n={"submission[assignment_id]":ENV.SUBMISSION.assignment_id,"submission[user_id]":ENV.SUBMISSION.user_id,"submission[group_comment]":o()("#submission_group_comment").attr("checked")?"1":"0"}
+if(o()(".grading_value:visible").length>0){n["submission[grade]"]=r["a"].delocalizeGrade(o()(".grading_value").val())
+o.a.ajaxJSON(i,t,n,c)}else{o()(".submission_header").loadingImage("remove")
+o()(".save_comment_button").attr("disabled",null)}})
+o()(".attach_comment_file_link").click(e=>{e.preventDefault()
+const i=o()("#comment_attachment_input_blank").clone(true).removeAttr("id")
+i.find("input").attr("name","attachments["+d+++"][uploaded_data]")
+o()("#add_comment_form .comment_attachments").append(i.slideDown())})
+o()(".delete_comment_attachment_link").click((function(e){e.preventDefault()
+o()(this).parents(".comment_attachment_input").slideUp((function(){o()(this).remove()}))}))
+o()(".save_rubric_button").click((function(){const e=o()(this).parents("#rubric_holder").find(".rubric")
+const i=rubricAssessment.assessmentData(e)
+const t=o()(".update_rubric_assessment_url").attr("href")
+const n="POST"
+e.loadingImage()
+o.a.ajaxJSON(t,n,i,t=>{e.loadingImage("remove")
+const n=t
+let s=false
+if(n.rubric_association){rubricAssessment.updateRubricAssociation(e,t.rubric_association)
+delete n.rubric_association}for(const e in l){const i=l[e].rubric_assessment
+if(i&&n&&n.id==i.id){l[e].rubric_assessment=n
+s=true}}if(!s){t.rubric_assessment||(t={rubric_assessment:t})
+l.push(t)
+const e=o()(document.createElement("option"))
+e.val(n.id).text(n.assessor_name).attr("id","rubric_assessment_option_"+n.id)
+o()("#rubric_assessments_select").prepend(e).val(n.id)}o()("#rubric_assessment_option_"+n.id).text(n.assessor_name)
+o()("#new_rubric_assessment_option").remove()
+o()("#rubric_assessments_list").show()
+"peer_review"===n.assessment_type&&o()(".save_rubric_button").remove()
+setTimeout(()=>{rubricAssessment.populateRubric(e,n,i)
+const t=n.artifact
+t&&g(t)},500)
+h()})}))
+o()("#rubric_holder .rubric").css({width:"auto",marginTop:0})
+f(o()("#rubric_holder"))
+o()(".hide_rubric_link").click(e=>{e.preventDefault()
+h()})
+o()(".assess_submission_link").click(e=>{e.preventDefault()
+o()("#rubric_assessments_select").change()
+p()})
+o()("#rubric_assessments_select").change((function(){const e=o()(this).val()
+let i=null
+for(const t in l){const n=l[t].rubric_assessment
+n.id==e&&(i=n)}const t=o()("#rubric_holder .rubric")
+rubricAssessment.populateNewRubric(t,i,ENV.rubricAssociation)
+const n=!i||i.assessor_id==ENV.RUBRIC_ASSESSMENT.assessor_id
+o()("#rubric_holder .save_rubric_button").showIf(n)})).change()
+o()(".media_comment_link").click(e=>{e.preventDefault()
+o()("#media_media_recording").show()
+const i=o()("#media_media_recording").find(".media_recording")
+i.mediaComment("create","any",(e,t)=>{o()("#media_media_recording").data("comment_id",e).data("comment_type",t)
+o()(document).triggerHandler("comment_change")
+o()("#add_comment_form").show()
+o()("#media_media_recording").hide()
+i.empty()},()=>{o()("#add_comment_form").show()
+o()("#media_media_recording").hide()})})
+o()("#media_recorder_container a").live("click",e=>{o()("#add_comment_form").show()
+o()("#media_media_recording").hide()})
+o()(".comments .comment_list").delegate(".play_comment_link","click",(function(e){e.preventDefault()
+const i=o()(this).parents(".comment_media").getTemplateData({textValues:["media_comment_id"]}).media_comment_id
+i&&o()(this).parents(".comment_media").find(".media_comment_content").mediaComment("show",i,"video",this)})).delegate("a.instructure_inline_media_comment","click",e=>{e.preventDefault()
+e.stopPropagation()})
+g(ENV.SUBMISSION.submission)}))}o()(document).fragmentChange((e,i)=>{if("#rubric"==i)o()(".assess_submission_link:visible:first").click()
+else if(i.match(/^#comment/)){let e=null
+try{e=JSON.parse(i.substring(8))}catch(e){}e&&e.comment&&o()(".grading_comment").val(e.comment)
+o()(".grading_comment").focus().select()}})
+INST.refreshGrades=function(){const e=o()(".submission_data_url").attr("href")
+setTimeout(()=>{o.a.ajaxJSON(e,"GET",{},c)},500)}
+o()(document).ready(()=>{window.addEventListener("message",e=>{"refreshGrades"===e.data&&INST.refreshGrades()},false)})
+var w=t("2/9e")
+var y=t("3lLS")
+var z=t.n(y)
+z()(()=>{v()
+w["a"].renderPills()})},KR5x:function(e,i,t){"use strict"
+t.d(i,"a",(function(){return w}))
+var n=t("1OyB")
+var s=t("vuIU")
+var a=t("md7G")
+var o=t("foSv")
+var r=t("Ji7U")
+var l=t("q1tI")
+var d=t.n(l)
+var c=t("17x9")
+var _=t.n(c)
+var u=t("cClk")
+var g=t("sTNg")
+var f=t("nAyT")
+var m=t("M8//")
+var h,p,b,v
+var w=(h=Object(f["a"])("7.0.0",null,"Use TextArea from ui-text-area instead."),h(p=(v=b=function(e){Object(r["a"])(i,e)
+function i(){var e
+var t
+Object(n["a"])(this,i)
+for(var s=arguments.length,r=new Array(s),l=0;l<s;l++)r[l]=arguments[l]
+t=Object(a["a"])(this,(e=Object(o["a"])(i)).call.apply(e,[this].concat(r)))
+t._textArea=null
+return t}Object(s["a"])(i,[{key:"focus",value:function(){this._textArea&&this._textArea.focus()}},{key:"render",value:function(){var e=this
+return d.a.createElement(m["a"],Object.assign({ref:function(i){e._textArea=i}},this.props))}},{key:"minHeight",get:function(){return this._textArea&&this._textArea.minHeight}},{key:"invalid",get:function(){return this._textArea&&this._textArea.invalid}},{key:"id",get:function(){return this._textArea&&this._textArea.id}},{key:"focused",get:function(){return this._textArea&&this._textArea.focused}},{key:"value",get:function(){return this._textArea&&this._textArea.value}}])
+i.displayName="TextArea"
+return i}(l["Component"]),b.propTypes={label:_.a.node.isRequired,id:_.a.string,size:_.a.oneOf(["small","medium","large"]),layout:_.a.oneOf(["stacked","inline"]),autoGrow:_.a.bool,resize:_.a.oneOf(["none","both","horizontal","vertical"]),width:_.a.string,height:_.a.string,maxHeight:_.a.oneOfType([_.a.number,_.a.string]),messages:_.a.arrayOf(g["FormPropTypes"].message),inline:_.a.bool,placeholder:_.a.string,disabled:_.a.bool,readOnly:_.a.bool,required:_.a.bool,textareaRef:_.a.func,defaultValue:_.a.string,value:Object(u["a"])(_.a.string),onChange:_.a.func},b.defaultProps={size:"medium",autoGrow:true,resize:"none",inline:false,messages:[],disabled:false,readOnly:false,textareaRef:function(e){},layout:"stacked",id:void 0,value:void 0,defaultValue:void 0,onChange:void 0,required:false,placeholder:void 0,width:void 0,height:void 0,maxHeight:void 0},v))||p)},"M8//":function(e,i,t){"use strict"
+var n=t("rePB")
+var s=t("1OyB")
+var a=t("vuIU")
+var o=t("md7G")
+var r=t("foSv")
+var l=t("JX7q")
+var d=t("Ji7U")
+var c=t("q1tI")
+var _=t.n(c)
+var u=t("17x9")
+var g=t.n(u)
+var f=t("TSYQ")
+var m=t.n(f)
+var h=t("cClk")
+var p=t("sTNg")
+var b=t("QF4Q")
+var v=t("yfCu")
+var w=t("8o96")
+var y=t("ISHz")
+var z=t("/UXv")
+var k=t("eGSd")
+var x=t("BTe1")
+var S=t("HMVb")
+var O=t("J2CL")
+var H=t("oXx0")
+var B=t("jtGx")
+function q(e){var i=e.colors,t=e.borders,n=e.spacing,s=e.typography,a=e.forms
+return{fontFamily:s.fontFamily,fontWeight:s.fontWeightNormal,color:i.textDarkest,background:i.backgroundLightest,borderWidth:t.widthSmall,borderStyle:t.style,borderTopColor:i.borderMedium,borderRightColor:i.borderMedium,borderBottomColor:i.borderMedium,borderLeftColor:i.borderMedium,borderRadius:t.radiusMedium,padding:n.small,focusOutlineColor:i.borderBrand,focusOutlineWidth:t.widthMedium,focusOutlineStyle:t.style,errorBorderColor:i.borderDanger,errorOutlineColor:i.borderDanger,placeholderColor:i.textDark,smallFontSize:s.fontSizeSmall,smallHeight:a.inputHeightSmall,mediumFontSize:s.fontSizeMedium,mediumHeight:a.inputHeightMedium,largeFontSize:s.fontSizeLarge,largeHeight:a.inputHeightLarge}}q.canvas=function(e){return{color:e["ic-brand-font-color-dark"],focusOutlineColor:e["ic-brand-primary"]}}
+t.d(i,"a",(function(){return R}))
+var j,M,C,I,F
+var T={componentId:"chpSa",template:function(e){return"\n\n.chpSa_byIz{position:relative}\n\n.chpSa_cPAP{border:".concat(e.focusOutlineWidth||"inherit"," ").concat(e.focusOutlineStyle||"inherit"," ").concat(e.focusOutlineColor||"inherit",";border-radius:calc(").concat(e.borderRadius||"inherit","*1.5);bottom:-0.25rem;box-sizing:border-box;display:block;left:-0.25rem;opacity:0;pointer-events:none;position:absolute;right:-0.25rem;top:-0.25rem;transform:scale(0.95);transition:all 0.2s}\n\n.chpSa_blLZ{-moz-appearance:none;-moz-osx-font-smoothing:grayscale;-webkit-appearance:none;-webkit-font-smoothing:antialiased;all:initial;animation:none 0s ease 0s 1 normal none running;appearance:none;backface-visibility:visible;background:transparent none repeat 0 0/auto auto padding-box border-box scroll;background:").concat(e.background||"inherit",";border:medium none currentColor;border-bottom-color:").concat(e.borderBottomColor||"inherit",";border-collapse:separate;border-image:none;border-left-color:").concat(e.borderLeftColor||"inherit",";border-radius:0;border-radius:").concat(e.borderRadius||"inherit",";border-right-color:").concat(e.borderRightColor||"inherit",";border-spacing:0;border-style:").concat(e.borderStyle||"inherit",";border-top-color:").concat(e.borderTopColor||"inherit",";border-width:").concat(e.borderWidth||"inherit",";bottom:auto;box-shadow:none;box-sizing:content-box;box-sizing:border-box;caption-side:top;clear:none;clip:auto;color:#000;color:").concat(e.color||"inherit",";column-count:auto;column-fill:balance;column-gap:normal;column-rule:medium none currentColor;column-span:1;column-width:auto;columns:auto;content:normal;counter-increment:none;counter-reset:none;cursor:auto;direction:ltr;display:inline;display:block;empty-cells:show;float:none;font-family:serif;font-family:").concat(e.fontFamily||"inherit",";font-size:medium;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:400;font-weight:").concat(e.fontWeight||"inherit",";height:auto;hyphens:none;left:auto;letter-spacing:normal;line-height:normal;list-style:disc outside none;margin:0;max-height:none;max-width:none;min-height:0;min-width:0;opacity:1;orphans:2;outline:medium none invert;overflow:visible;overflow-x:visible;overflow-y:visible;padding:0;padding:").concat(e.padding||"inherit",";page-break-after:auto;page-break-before:auto;page-break-inside:auto;perspective:none;perspective-origin:50% 50%;position:static;right:auto;tab-size:8;table-layout:auto;text-align:left;text-align:start;text-align-last:auto;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;top:auto;transform:none;transform-origin:50% 50% 0;transform-style:flat;transition:none 0s ease 0s;unicode-bidi:normal;vertical-align:baseline;visibility:visible;white-space:normal;white-space:pre-wrap;widows:2;width:auto;width:100%;word-spacing:normal;word-wrap:break-word;z-index:auto}\n\n[dir=ltr] .chpSa_blLZ{text-align:left}\n\n[dir=rtl] .chpSa_blLZ{text-align:right}\n\n.chpSa_blLZ:focus~.chpSa_cPAP{opacity:1;transform:scale(1)}\n\n.chpSa_blLZ[aria-invalid],.chpSa_blLZ[aria-invalid]:focus,.chpSa_blLZ[aria-invalid]:focus~.chpSa_cPAP{border-color:").concat(e.errorBorderColor||"inherit","}\n\n.chpSa_blLZ:-ms-input-placeholder{color:").concat(e.placeholderColor||"inherit","}\n\n.chpSa_blLZ::-ms-input-placeholder{color:").concat(e.placeholderColor||"inherit","}\n\n.chpSa_blLZ::placeholder{color:").concat(e.placeholderColor||"inherit","}\n\n.chpSa_blLZ.chpSa_ywdX{cursor:not-allowed;opacity:0.5;pointer-events:none}\n\n.chpSa_doqw{font-size:").concat(e.smallFontSize||"inherit","}\n\n.chpSa_ycrn{font-size:").concat(e.mediumFontSize||"inherit","}\n\n.chpSa_cMDj{font-size:").concat(e.largeFontSize||"inherit","}")},layout:"chpSa_byIz",outline:"chpSa_cPAP",textarea:"chpSa_blLZ",disabled:"chpSa_ywdX",small:"chpSa_doqw",medium:"chpSa_ycrn",large:"chpSa_cMDj"}
+var R=(j=Object(H["a"])(),M=Object(O["themeable"])(q,T),j(C=M(C=(F=I=function(e){Object(d["a"])(i,e)
+function i(){var e
+Object(s["a"])(this,i)
+e=Object(o["a"])(this,Object(r["a"])(i).call(this))
+e._textareaResize=function(i){var t=e._textarea.style.height
+if(t!=e._height){e._manuallyResized=true
+e._textarea.style.overflowY="auto"
+e._container.style.minHeight=t}}
+e.grow=function(i){if(!e._textarea||e._manuallyResized)return
+var t=e._textarea.offsetHeight-e._textarea.clientHeight
+var n=""
+e._textarea.style.height="auto"
+e._textarea.style.overflowY="hidden"
+n=e._textarea.scrollHeight+t+"px"
+var s=Object(S["a"])(e.props.maxHeight,Object(b["a"])(Object(l["a"])(e)))
+if(e.props.maxHeight&&e._textarea.scrollHeight>s)e._textarea.style.overflowY="auto"
+else if(e.props.height)if(""===e._textarea.value)n=e.props.height
+else if(Object(S["a"])(e.props.height,Object(b["a"])(Object(l["a"])(e)))>e._textarea.scrollHeight){e._textarea.style.overflowY="auto"
+n=e.props.height}var a=Object(S["a"])(n)>s
+a||(e._container.style.minHeight=n)
+e._height=n
+e._textarea.style.height=n
+e._textarea.scrollTop=e._textarea.scrollHeight}
+e.handleChange=function(i){var t=e.props,n=t.onChange,s=t.value,a=t.disabled,o=t.readOnly
+if(a||o){i.preventDefault()
+return}"undefined"===typeof s&&e.autoGrow()
+"function"===typeof n&&n(i)}
+e.handleContainerRef=function(i){e._container=i}
+e._defaultId=Object(x["a"])("TextArea")
+return e}Object(a["a"])(i,[{key:"componentDidMount",value:function(){this.autoGrow()}},{key:"componentWillReceiveProps",value:function(e){this.autoGrow()}},{key:"componentWillUnmount",value:function(){this._listener&&this._listener.remove()
+this._textareaResizeListener&&this._textareaResizeListener.remove()
+this._request&&this._request.cancel()
+this._debounced&&this._debounced.cancel()}},{key:"autoGrow",value:function(){if(this.props.autoGrow){this._debounced||(this._debounced=Object(k["a"])(this.grow,200,{leading:false,trailing:true}))
+this._listener||(this._listener=Object(v["a"])(window,"resize",this._debounced))
+this._textarea&&!this._textareaResizeListener&&(this._textareaResizeListener=Object(w["a"])(this._textarea,this._textareaResize,["height"]))
+this._request=Object(y["a"])(this.grow)}}},{key:"focus",value:function(){this._textarea.focus()}},{key:"render",value:function(){var e,t=this
+var s=this.props,a=s.autoGrow,o=s.placeholder,r=s.value,l=s.defaultValue,d=s.disabled,c=s.readOnly,u=s.required,g=s.width,f=s.height,h=s.maxHeight,b=s.textareaRef,v=s.resize,w=s.size
+var y=Object(B["a"])(this.props,i.propTypes)
+var z=(e={},Object(n["a"])(e,T.textarea,true),Object(n["a"])(e,T[w],true),Object(n["a"])(e,T.disabled,d),e)
+var k={width:g,resize:v,height:a?null:f,maxHeight:h}
+var x=_.a.createElement("textarea",Object.assign({},y,{value:r,defaultValue:l,placeholder:o,ref:function(e){t._textarea=e
+for(var i=arguments.length,n=new Array(i>1?i-1:0),s=1;s<i;s++)n[s-1]=arguments[s]
+b.apply(t,[e].concat(n))},style:k,id:this.id,required:u,"aria-required":u,"aria-invalid":this.invalid?"true":null,disabled:d||c,className:m()(z),onChange:this.handleChange}))
+return _.a.createElement(p["FormField"],Object.assign({},Object(B["c"])(this.props,p["FormField"].propTypes),{vAlign:"top",id:this.id,ref:function(e){t._node=e}}),_.a.createElement("div",{className:T.layout,style:{width:g,maxHeight:h},ref:this.handleContainerRef},x,d||c?null:_.a.createElement("span",{className:T.outline,"aria-hidden":"true"})))}},{key:"minHeight",get:function(){return this._textarea.style.minHeight}},{key:"invalid",get:function(){return this.props.messages&&this.props.messages.findIndex((function(e){return"error"===e.type}))>=0}},{key:"id",get:function(){return this.props.id||this._defaultId}},{key:"focused",get:function(){return Object(z["a"])(this._textarea)}},{key:"value",get:function(){return this._textarea.value}}])
+i.displayName="TextArea"
+return i}(c["Component"]),I.propTypes={label:g.a.node.isRequired,id:g.a.string,size:g.a.oneOf(["small","medium","large"]),layout:g.a.oneOf(["stacked","inline"]),autoGrow:g.a.bool,resize:g.a.oneOf(["none","both","horizontal","vertical"]),width:g.a.string,height:g.a.string,maxHeight:g.a.oneOfType([g.a.number,g.a.string]),messages:g.a.arrayOf(p["FormPropTypes"].message),inline:g.a.bool,placeholder:g.a.string,disabled:g.a.bool,readOnly:g.a.bool,required:g.a.bool,textareaRef:g.a.func,defaultValue:g.a.string,value:Object(h["a"])(g.a.string),onChange:g.a.func},I.defaultProps={size:"medium",autoGrow:true,resize:"none",inline:false,messages:[],disabled:false,readOnly:false,textareaRef:function(e){},layout:"stacked",id:void 0,value:void 0,defaultValue:void 0,onChange:void 0,required:false,placeholder:void 0,width:void 0,height:void 0,maxHeight:void 0},F))||C)||C)},RhCJ:function(e,i,t){"use strict"
+t.d(i,"a",(function(){return n}))
+function n(e,i,t){if("input"===e.as){if("children"===i&&e.children||void 0==e.value)return new Error("Prop `value` and not `children` must be supplied if `".concat(t,' as="input"`'))}else{if("value"===i&&void 0!=e.value)return new Error("Prop `children` and not `value` must be supplied unless `".concat(t,' as="input"`'))
+if(!e.children)return new Error("Prop `children` should be supplied unless `".concat(t,' as="input"`.'))}return}},WEeK:function(e,i,t){"use strict"
+var n=t("rePB")
+var s=t("Ff2n")
+var a=t("1OyB")
+var o=t("vuIU")
+var r=t("md7G")
+var l=t("foSv")
+var d=t("Ji7U")
+var c=t("q1tI")
+var _=t.n(c)
+var u=t("17x9")
+var g=t.n(u)
+var f=t("TSYQ")
+var m=t.n(f)
+var h=t("cClk")
+var p=t("nAyT")
+var b=t("jtGx")
+var v=t("E+IV")
+var w=t("tCl5")
+var y=t("/UXv")
+var z=t("sTNg")
+var k=t("TstA")
+var x=t("BTe1")
+var S=t("J2CL")
+function O(e){var i=e.colors,t=e.typography,n=e.borders,s=e.spacing,a=e.forms
+return{fontFamily:t.fontFamily,fontWeight:t.fontWeightNormal,borderWidth:n.widthSmall,borderStyle:n.style,borderColor:i.borderMedium,borderRadius:n.radiusMedium,iconColor:i.textDarkest,color:i.textDarkest,background:i.backgroundLightest,padding:s.small,focusOutlineWidth:n.widthMedium,focusOutlineStyle:n.style,focusOutlineColor:i.borderBrand,errorBorderColor:i.borderDanger,errorOutlineColor:i.borderDanger,placeholderColor:i.textDark,smallFontSize:t.fontSizeSmall,smallHeight:a.inputHeightSmall,mediumFontSize:t.fontSizeMedium,mediumHeight:a.inputHeightMedium,largeFontSize:t.fontSizeLarge,largeHeight:a.inputHeightLarge}}O.canvas=function(e){return{color:e["ic-brand-font-color-dark"],iconColor:e["ic-brand-font-color-dark"],focusBorderColor:e["ic-brand-primary"],focusOutlineColor:e["ic-brand-primary"]}}
+t.d(i,"a",(function(){return I}))
+var H,B,q,j,M
+var C={componentId:"qBMHb",template:function(e){return"\n\n.qBMHb_cSXm{background:".concat(e.background||"inherit",";border:").concat(e.borderWidth||"inherit"," ").concat(e.borderStyle||"inherit"," ").concat(e.borderColor||"inherit",";border-radius:").concat(e.borderRadius||"inherit",";position:relative}\n\n.qBMHb_cSXm,.qBMHb_cSXm:before{box-sizing:border-box;display:block}\n\n.qBMHb_cSXm:before{border:").concat(e.focusOutlineWidth||"inherit"," ").concat(e.focusOutlineStyle||"inherit"," ").concat(e.focusOutlineColor||"inherit",";border-radius:calc(").concat(e.borderRadius||"inherit",'*1.5);bottom:-0.25rem;content:"";left:-0.25rem;opacity:0;pointer-events:none;position:absolute;right:-0.25rem;top:-0.25rem;transform:scale(0.95);transition:all 0.2s}\n\n.qBMHb_cSXm.qBMHb_cVYB:before{opacity:1;transform:scale(1)}\n\n.qBMHb_cSXm.qBMHb_ywdX{cursor:not-allowed;opacity:0.5;pointer-events:none}\n\n.qBMHb_cSXm.qBMHb_fszt,.qBMHb_cSXm.qBMHb_fszt.qBMHb_cVYB:before{border-color:').concat(e.errorBorderColor||"inherit","}\n\n.qBMHb_cwos,input[type].qBMHb_cwos{-moz-appearance:none;-moz-osx-font-smoothing:grayscale;-webkit-appearance:none;-webkit-font-smoothing:antialiased;all:initial;animation:none 0s ease 0s 1 normal none running;appearance:none;backface-visibility:visible;background:transparent none repeat 0 0/auto auto padding-box border-box scroll;background:transparent;border:medium none currentColor;border:none;border-collapse:separate;border-image:none;border-radius:0;border-spacing:0;bottom:auto;box-shadow:none;box-sizing:content-box;box-sizing:border-box;caption-side:top;clear:none;clip:auto;color:#000;color:").concat(e.color||"inherit",";column-count:auto;column-fill:balance;column-gap:normal;column-rule:medium none currentColor;column-span:1;column-width:auto;columns:auto;content:normal;counter-increment:none;counter-reset:none;cursor:auto;direction:ltr;display:inline;display:block;empty-cells:show;float:none;font-family:serif;font-family:").concat(e.fontFamily||"inherit",";font-size:medium;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:400;font-weight:").concat(e.fontWeight||"inherit",";height:auto;hyphens:none;left:auto;letter-spacing:normal;line-height:normal;list-style:disc outside none;margin:0;max-height:none;max-width:none;min-height:0;min-width:0;opacity:1;orphans:2;outline:medium none invert;outline:none;overflow:visible;overflow-x:visible;overflow-y:visible;padding:0;padding:0 ").concat(e.padding||"inherit",";page-break-after:auto;page-break-before:auto;page-break-inside:auto;perspective:none;perspective-origin:50% 50%;position:static;right:auto;tab-size:8;table-layout:auto;text-align:left;text-align-last:auto;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;top:auto;transform:none;transform-origin:50% 50% 0;transform-style:flat;transition:none 0s ease 0s;unicode-bidi:normal;vertical-align:baseline;visibility:visible;white-space:normal;widows:2;width:auto;width:100%;word-spacing:normal;z-index:auto}\n\n.qBMHb_cwos::-ms-clear,input[type].qBMHb_cwos::-ms-clear{display:none}\n\n.qBMHb_cwos[autocomplete=off]::-webkit-contacts-auto-fill-button,input[type].qBMHb_cwos[autocomplete=off]::-webkit-contacts-auto-fill-button{display:none!important}\n\n.qBMHb_cwos:focus,input[type].qBMHb_cwos:focus{box-shadow:none}\n\n.qBMHb_cwos:-ms-input-placeholder,input[type].qBMHb_cwos:-ms-input-placeholder{color:").concat(e.placeholderColor||"inherit","}\n\n.qBMHb_cwos::-ms-input-placeholder,input[type].qBMHb_cwos::-ms-input-placeholder{color:").concat(e.placeholderColor||"inherit","}\n\n.qBMHb_cwos::placeholder,input[type].qBMHb_cwos::placeholder{color:").concat(e.placeholderColor||"inherit","}\n\n.qBMHb_cwos.qBMHb_doqw,input[type].qBMHb_cwos.qBMHb_doqw{font-size:").concat(e.smallFontSize||"inherit",";height:calc(").concat(e.smallHeight||"inherit"," - 2*").concat(e.borderWidth||"inherit",");line-height:calc(").concat(e.smallHeight||"inherit"," - 2*").concat(e.borderWidth||"inherit",")}\n\n.qBMHb_cwos.qBMHb_ycrn,input[type].qBMHb_cwos.qBMHb_ycrn{font-size:").concat(e.mediumFontSize||"inherit",";height:calc(").concat(e.mediumHeight||"inherit"," - 2*").concat(e.borderWidth||"inherit",");line-height:calc(").concat(e.mediumHeight||"inherit"," - 2*").concat(e.borderWidth||"inherit",")}\n\n.qBMHb_cwos.qBMHb_cMDj,input[type].qBMHb_cwos.qBMHb_cMDj{font-size:").concat(e.largeFontSize||"inherit",";height:calc(").concat(e.largeHeight||"inherit"," - 2*").concat(e.borderWidth||"inherit",");line-height:calc(").concat(e.largeHeight||"inherit"," - 2*").concat(e.borderWidth||"inherit",")}\n\n.qBMHb_cwos.qBMHb_EMjX,input[type].qBMHb_cwos.qBMHb_EMjX{text-align:start}\n\n[dir=ltr] .qBMHb_cwos.qBMHb_EMjX,[dir=ltr] input[type].qBMHb_cwos.qBMHb_EMjX{text-align:left}\n\n[dir=rtl] .qBMHb_cwos.qBMHb_EMjX,[dir=rtl] input[type].qBMHb_cwos.qBMHb_EMjX{text-align:right}\n\n.qBMHb_cwos.qBMHb_ImeN,[dir=ltr] .qBMHb_cwos.qBMHb_ImeN,[dir=ltr] input[type].qBMHb_cwos.qBMHb_ImeN,[dir=rtl] .qBMHb_cwos.qBMHb_ImeN,[dir=rtl] input[type].qBMHb_cwos.qBMHb_ImeN,input[type].qBMHb_cwos.qBMHb_ImeN{text-align:center}")},facade:"qBMHb_cSXm",focused:"qBMHb_cVYB",disabled:"qBMHb_ywdX",invalid:"qBMHb_fszt",input:"qBMHb_cwos",small:"qBMHb_doqw",medium:"qBMHb_ycrn",large:"qBMHb_cMDj","textAlign--start":"qBMHb_EMjX","textAlign--center":"qBMHb_ImeN"}
+var I=(H=Object(p["a"])("7.0.0",{label:"renderLabel",required:"isRequired",inline:"display"}),B=Object(S["themeable"])(O,C),H(q=B(q=(M=j=function(e){Object(d["a"])(i,e)
+function i(e){var t
+Object(a["a"])(this,i)
+t=Object(r["a"])(this,Object(l["a"])(i).call(this))
+t.handleInputRef=function(e){t._input=e
+t.props.inputRef(e)}
+t.handleChange=function(e){t.props.onChange(e,e.target.value)}
+t.handleBlur=function(e){t.props.onBlur(e)
+t.setState({hasFocus:false})}
+t.handleFocus=function(e){t.props.onFocus(e)
+t.setState({hasFocus:true})}
+t.state={hasFocus:false}
+t._defaultId=Object(x["a"])("TextInput")
+t._messagesId=Object(x["a"])("TextInput-messages")
+return t}Object(o["a"])(i,[{key:"focus",value:function(){this._input.focus()}},{key:"renderInput",value:function(){var e
+var i=this.props,t=i.type,a=i.size,o=(i.display,i.textAlign),r=i.placeholder,l=i.value,d=i.defaultValue,c=i.required,u=i.isRequired,g=Object(s["a"])(i,["type","size","display","textAlign","placeholder","value","defaultValue","required","isRequired"])
+var f=Object(b["b"])(g)
+var h=this.interaction
+var p=(e={},Object(n["a"])(e,C.input,true),Object(n["a"])(e,C[a],a),Object(n["a"])(e,C["textAlign--".concat(o)],o),e)
+var v=""
+f["aria-describedby"]&&(v="".concat(f["aria-describedby"]))
+this.hasMessages&&(v=""!==v?"".concat(v," ").concat(this._messagesId):this._messagesId)
+return _.a.createElement("input",Object.assign({},f,{className:m()(p),defaultValue:d,value:l,placeholder:r,ref:this.handleInputRef,type:t,id:this.id,required:u||c,"aria-invalid":this.invalid?"true":null,disabled:"disabled"===h,readOnly:"readonly"===h,"aria-describedby":""!==v?v:null,onChange:this.handleChange,onBlur:this.handleBlur,onFocus:this.handleFocus}))}},{key:"render",value:function(){var e
+var i=this.props,t=i.width,s=i.inline,a=i.display,o=i.label,r=i.renderLabel,l=i.renderBeforeInput,d=i.renderAfterInput,c=i.messages,u=i.inputContainerRef,g=i.icon,f=i.shouldNotWrap
+var h=this.interaction
+var p=l||d||g
+var b=(e={},Object(n["a"])(e,C.facade,true),Object(n["a"])(e,C.disabled,"disabled"===h),Object(n["a"])(e,C.invalid,this.invalid),Object(n["a"])(e,C.focused,this.state.hasFocus),e)
+return _.a.createElement(z["FormField"],{id:this.id,label:Object(v["a"])(r||o),messagesId:this._messagesId,messages:c,inline:"inline-block"===a||s,width:t,inputContainerRef:u,layout:this.props.layout},_.a.createElement("span",{className:m()(b)},p?_.a.createElement(k["a"],{wrap:f?"no-wrap":"wrap"},l&&_.a.createElement(k["a"].Item,{padding:"0 0 0 small"},Object(v["a"])(l)),_.a.createElement(k["a"].Item,{shouldGrow:true,shouldShrink:true},_.a.createElement(k["a"],{__dangerouslyIgnoreExperimentalWarnings:true},_.a.createElement(k["a"].Item,{shouldGrow:true,shouldShrink:true},this.renderInput()),(d||g)&&_.a.createElement(k["a"].Item,{padding:"0 small 0 0"},d?Object(v["a"])(d):Object(v["a"])(g))))):this.renderInput()))}},{key:"interaction",get:function(){return Object(w["a"])({props:this.props})}},{key:"hasMessages",get:function(){return this.props.messages&&this.props.messages.length>0}},{key:"invalid",get:function(){return this.props.messages&&this.props.messages.findIndex((function(e){return"error"===e.type}))>=0}},{key:"focused",get:function(){return Object(y["a"])(this._input)}},{key:"value",get:function(){return this._input.value}},{key:"id",get:function(){return this.props.id||this._defaultId}}])
+i.displayName="TextInput"
+return i}(c["Component"]),j.propTypes={renderLabel:g.a.oneOfType([g.a.node,g.a.func]),type:g.a.oneOf(["text","email","url","tel","search","password"]),id:g.a.string,value:Object(h["a"])(g.a.string),defaultValue:g.a.string,interaction:g.a.oneOf(["enabled","disabled","readonly"]),messages:g.a.arrayOf(z["FormPropTypes"].message),size:g.a.oneOf(["small","medium","large"]),textAlign:g.a.oneOf(["start","center"]),width:g.a.string,display:g.a.oneOf(["inline-block","block"]),shouldNotWrap:g.a.bool,placeholder:g.a.string,isRequired:g.a.bool,inputRef:g.a.func,inputContainerRef:g.a.func,renderBeforeInput:g.a.oneOfType([g.a.node,g.a.func]),renderAfterInput:g.a.oneOfType([g.a.node,g.a.func]),onChange:g.a.func,onBlur:g.a.func,onFocus:g.a.func,icon:g.a.func,label:g.a.oneOfType([g.a.node,g.a.func]),required:g.a.bool,inline:g.a.bool},j.defaultProps={renderLabel:void 0,type:"text",id:void 0,interaction:void 0,isRequired:false,value:void 0,defaultValue:void 0,display:"block",shouldNotWrap:false,placeholder:void 0,width:void 0,size:"medium",textAlign:"start",messages:[],inputRef:function(e){},inputContainerRef:function(e){},onChange:function(e,i){},onBlur:function(e){},onFocus:function(e){},renderBeforeInput:void 0,renderAfterInput:void 0},M))||q)||q)},rWGD:function(e,i,t){"use strict"
+var n=t("pQTu")
+var s=t("m0r6")
+Object(s["a"])(JSON.parse('{"ar":{"click_here_to_download_size_of_file_74443988":"انقر هنا للتنزيل %{size_of_file}","download_assignment_submissions_41e50ee7":"تنزيل عمليات إرسال المهمة","excused_cf8792eb":"ليس إجباري","submissions":{"creating_zip":"جارٍ إنشاء الملف المضغوط...","download_submissions_title":"تنزيل عمليات إرسال المهمة","finished_redirecting":"انتهى!  جارٍ إعادة التوجيه إلى الملف...","gathering_files":"جارٍ تجميع الملفات (%{progress})...","gathering_files_progress":"يجري تجميع الملفات (%{progress})...","see_attached_files":"انظر الملفات المرفقة"}},"cy":{"click_here_to_download_size_of_file_74443988":"Cliciwch yma i lwytho i lawr %{size_of_file}","download_assignment_submissions_41e50ee7":"Llwytho’r aseiniadau sydd wedi’u cyflwyno i lawr","excused_cf8792eb":"Wedi esgusodi","submissions":{"creating_zip":"Wrthi’n creu ffeil .zip...","download_submissions_title":"Llwytho’r aseiniadau sydd wedi’u cyflwyno i lawr","finished_redirecting":"Wedi gorffen!  Wrthi’n ailgyfeirio i ffeil...","gathering_files":"Wrthi’n casglu ffeiliau (%{progress})...","gathering_files_progress":"Wrthi’n casglu ffeiliau (%{progress})...","see_attached_files":"Gweler y ffeiliau sydd wedi’u hatodi"}},"da":{"click_here_to_download_size_of_file_74443988":"Klik her for at downloade %{size_of_file}","download_assignment_submissions_41e50ee7":"Download opgaveafleveringer","excused_cf8792eb":"Undskyldt","submissions":{"creating_zip":"Opretter zip-fil ...","download_submissions_title":"Download opgaveafleveringer","finished_redirecting":"Færdig! Omdirigerer til fil ...","gathering_files":"Samler filer (%{progress})...","gathering_files_progress":"Samler filer (%{progress})...","see_attached_files":"Se vedhæftede filer"}},"da-x-k12":{"click_here_to_download_size_of_file_74443988":"Klik her for at downloade %{size_of_file}","download_assignment_submissions_41e50ee7":"Download opgaveafleveringer","excused_cf8792eb":"Undskyldt","submissions":{"creating_zip":"Opretter zip-fil ...","download_submissions_title":"Download opgaveafleveringer","finished_redirecting":"Færdig! Omdirigerer til fil ...","gathering_files":"Samler filer (%{progress})...","gathering_files_progress":"Samler filer (%{progress})...","see_attached_files":"Se vedhæftede filer"}},"de":{"click_here_to_download_size_of_file_74443988":"Zum Herunterladen hier klicken %{size_of_file}","download_assignment_submissions_41e50ee7":"Aufgabenabgaben herunterladen","excused_cf8792eb":"Entschuldigt","submissions":{"creating_zip":"Zip-Datei wird erstellt ...","download_submissions_title":"Aufgabenabgaben herunterladen","finished_redirecting":"Fertig! Weiterleitung in Datei ...","gathering_files":"Dateien sammeln (%{progress}) ...","gathering_files_progress":"Dateien sammeln (%{progress}) ...","see_attached_files":"Siehe angehängte Dateien"}},"el":{"excused_cf8792eb":"Δικαιολογημένος/η","submissions":{"creating_zip":"Δημιουργία αρχείου zip...","download_submissions_title":"Λήψη των Υποβολών Εργασιών","finished_redirecting":"\\u003cmrk mid=\\"3115\\" mtype=\\"seg\\"\\u003eΟλοκληρώθηκε!\\u003c/mrk\\u003e  \\u003cmrk mid=\\"3116\\" mtype=\\"seg\\"\\u003eΑνακατεύθυνση στο Αρχείο...\\u003c/mrk\\u003e","gathering_files":"Συγκέντρωση Αρχείων (%{progress})...","gathering_files_progress":"Συγκέντρωση Αρχείων (%{progress})...","see_attached_files":"Δείτε τα επισυναπτόμενα αρχεία"}},"en-AU":{"click_here_to_download_size_of_file_74443988":"Click here to download %{size_of_file}","download_assignment_submissions_41e50ee7":"Download Assignment Submissions","excused_cf8792eb":"Excused","submissions":{"creating_zip":"Creating zip file...","download_submissions_title":"Download Assignment Submissions","finished_redirecting":"Finished!  Redirecting to File...","gathering_files":"Gathering Files (%{progress})...","gathering_files_progress":"Gathering Files (%{progress})...","see_attached_files":"See attached files"}},"en-AU-x-unimelb":{"click_here_to_download_size_of_file_74443988":"Click here to download %{size_of_file}","download_assignment_submissions_41e50ee7":"Download Assignment Submissions","excused_cf8792eb":"Excused","submissions":{"creating_zip":"Creating zip file...","download_submissions_title":"Download Assignment Submissions","finished_redirecting":"Finished!  Redirecting to File...","gathering_files":"Gathering Files (%{progress})...","gathering_files_progress":"Gathering Files (%{progress})...","see_attached_files":"See attached files"}},"en-CA":{"click_here_to_download_size_of_file_74443988":"Click here to download %{size_of_file}","download_assignment_submissions_41e50ee7":"Download Assignment Submissions","excused_cf8792eb":"Excused","submissions":{"creating_zip":"Creating zip file...","download_submissions_title":"Download Assignment Submissions","finished_redirecting":"Finished!  Redirecting to File...","gathering_files":"Gathering Files (%{progress})...","gathering_files_progress":"Gathering Files (%{progress})...","see_attached_files":"See attached files"}},"en-GB":{"click_here_to_download_size_of_file_74443988":"Click here to download %{size_of_file}","download_assignment_submissions_41e50ee7":"Download assignment submissions","excused_cf8792eb":"Excused","submissions":{"creating_zip":"Creating zip file...","download_submissions_title":"Download assignment submissions","finished_redirecting":"Finished!  Redirecting to file...","gathering_files":"Gathering files (%{progress})...","gathering_files_progress":"Gathering files (%{progress})...","see_attached_files":"See attached files"}},"en-GB-x-lbs":{"click_here_to_download_size_of_file_74443988":"Click here to download %{size_of_file}","download_assignment_submissions_41e50ee7":"Download task submissions","excused_cf8792eb":"Excused","submissions":{"creating_zip":"Creating zip file...","download_submissions_title":"Download task submissions","finished_redirecting":"Finished!  Redirecting to file...","gathering_files":"Gathering files (%{progress})...","gathering_files_progress":"Gathering files (%{progress})...","see_attached_files":"See attached files"}},"en-GB-x-ukhe":{"click_here_to_download_size_of_file_74443988":"Click here to download %{size_of_file}","download_assignment_submissions_41e50ee7":"Download assignment submissions","excused_cf8792eb":"Excused","submissions":{"creating_zip":"Creating zip file...","download_submissions_title":"Download assignment submissions","finished_redirecting":"Finished!  Redirecting to file...","gathering_files":"Gathering files (%{progress})...","gathering_files_progress":"Gathering files (%{progress})...","see_attached_files":"See attached files"}},"es":{"click_here_to_download_size_of_file_74443988":"Haga clic aquí para descargar %{size_of_file}","download_assignment_submissions_41e50ee7":"Descargar las entregas de tareas","excused_cf8792eb":"Justificado","submissions":{"creating_zip":"Creando un archivo comprimido zip...","download_submissions_title":"Descargar las entregas de tareas","finished_redirecting":"¡Terminado!  Redirigiendo al archivo...","gathering_files":"Recopilando archivos (%{progress})...","gathering_files_progress":"Recopilando archivos (%{progress})...","see_attached_files":"Ver archivos adjuntos"}},"fa":{"click_here_to_download_size_of_file_74443988":"برای بارگیری %{size_of_file} اینجا کلیک کنید","download_assignment_submissions_41e50ee7":"بارگیری تکالیف ارسالی ","excused_cf8792eb":"معاف شد","submissions":{"creating_zip":"درحال ایجاد فایل فشرده...","download_submissions_title":"بارگیری موردهای ارسالی تکلیف","finished_redirecting":"به پایان رسید! در حال تغییر مسیر به فایل ...","gathering_files":"در حال گردآوری فایل ها (%{progress})...","gathering_files_progress":"در حال گردآوری فایل ها (%{progress})...","see_attached_files":"مشاهده فایل های پیوست شده"}},"fi":{"click_here_to_download_size_of_file_74443988":"Napsauta tähän ladataksesi %{size_of_file}","download_assignment_submissions_41e50ee7":"Lataa tehtävän lähetykset","excused_cf8792eb":"Annettu anteeksi","submissions":{"creating_zip":"Luodaan zip-tiedostoa...","download_submissions_title":"Lataa tehtävän lähetykset","finished_redirecting":"Valmis!  Uudelleenohjataan tiedostoon...","gathering_files":"Kerätään tiedostoja (%{progress})...","gathering_files_progress":"Kerätään tiedostoja (%{progress})...","see_attached_files":"Katso liitetyt tiedosto"}},"fr":{"click_here_to_download_size_of_file_74443988":"Cliquez ici pour télécharger %{size_of_file}","download_assignment_submissions_41e50ee7":"Télécharger les envois de travaux","excused_cf8792eb":"Pas obligatoire","submissions":{"creating_zip":"Création d’un fichier zip...","download_submissions_title":"Télécharger les envois de tâches","finished_redirecting":"Terminé. Redirection vers le fichier...","gathering_files":"Collecte des fichiers (%{progress})...","gathering_files_progress":"Collecte des fichiers (%{progress})...","see_attached_files":"Voir les fichiers joints"}},"fr-CA":{"click_here_to_download_size_of_file_74443988":"Cliquez ici pour télécharger %{size_of_file}","download_assignment_submissions_41e50ee7":"Télécharger les envois de tâches","excused_cf8792eb":"Pas obligatoire","submissions":{"creating_zip":"Création d’un fichier zip...","download_submissions_title":"Télécharger les envois de tâches","finished_redirecting":"Terminé. Redirection vers le fichier...","gathering_files":"Collecte des fichiers (%{progress})...","gathering_files_progress":"Collecte des fichiers (%{progress})...","see_attached_files":"Voir les fichiers joints"}},"he":{"click_here_to_download_size_of_file_74443988":"יש להקליק כאן כדי להוריד %{size_of_file}","download_assignment_submissions_41e50ee7":"הורדת הגשות מטלה","excused_cf8792eb":"נסלח","submissions":{"creating_zip":"מכין קובץ זיפ...","download_submissions_title":"הורדת הגשות משימות","finished_redirecting":"נסתיים! מנתב לקובץ...","gathering_files":"אוסף קבצים (%{progress})...","gathering_files_progress":"אוסף קבצים (%{progress})... ","see_attached_files":"ראו קבצים מצורפים"}},"ht":{"click_here_to_download_size_of_file_74443988":"Klike la pou telechaje %{size_of_file}","download_assignment_submissions_41e50ee7":"Telechaje Soumisyon Sesyon","excused_cf8792eb":"Egzante","submissions":{"creating_zip":"Kreyasyon fichye zip...","download_submissions_title":"Telechaje Soumisyon Sesyon","finished_redirecting":"Fini! Redireksyon a Fichye...","gathering_files":"Rasanbleman Fichye (%{progress})...","gathering_files_progress":"Rasanbleman Fichye (%{progress})...","see_attached_files":"Gade fichye atache yo"}},"hu":{"excused_cf8792eb":"Felmentve","submissions":{"creating_zip":"Zip file létrehozása...","download_submissions_title":"Beadott feladatmegoldások letöltése","finished_redirecting":"Befejezve! Átirányítás a fájlhoz...","gathering_files":"Fájlok összegyűjtése (%{progress})...","gathering_files_progress":"Fájlok összegyűjtése (%{progress})...","see_attached_files":"Lásd csatolt fájlok"}},"hy":{"excused_cf8792eb":"Ներված է","submissions":{"creating_zip":"Zip ֆայլ է ստեղծվում...","download_submissions_title":"Ներբեռնել ուղարկված հանձնարարությունները ","finished_redirecting":"Ավարտված է: Անցնել __ֆայլին...","gathering_files":"Ֆայլերի հավաքագրում (%{progress})...","gathering_files_progress":"Ֆայլերի հավաքագրում (%{progress})...","see_attached_files":"Տես կից ֆայլերը"}},"is":{"click_here_to_download_size_of_file_74443988":"Smella hér til að  hlaða niður %{size_of_file}","download_assignment_submissions_41e50ee7":"Hlaða niður skiluðum verkefnum","excused_cf8792eb":"Undanþegið","submissions":{"creating_zip":"Stofna ZIP-skrá...","download_submissions_title":"Hlaða niður skiluðum verkefnum","finished_redirecting":"Búið! Endurbeini á skrá...","gathering_files":"Safna skrám (%{progress})...","gathering_files_progress":"Safna skrám (%{progress})...","see_attached_files":"Sjá viðhengdar skrár"}},"it":{"click_here_to_download_size_of_file_74443988":"Fai clic qui per scaricare %{size_of_file}","download_assignment_submissions_41e50ee7":"Scarica compiti inviati","excused_cf8792eb":"Giustificato","submissions":{"creating_zip":"Creazione file zip in corso...","download_submissions_title":"Scarica consegne compiti","finished_redirecting":"Terminato.  Reindirizzamento al file in corso...","gathering_files":"Raccolta file (%{progress}) in corso...","gathering_files_progress":"Raccolta file (%{progress}) in corso...","see_attached_files":"Vedi file allegati"}},"ja":{"click_here_to_download_size_of_file_74443988":"ここをクリックしてダウンロード%{size_of_file}","download_assignment_submissions_41e50ee7":"課題提出物のダウンロード","excused_cf8792eb":"免除","submissions":{"creating_zip":"zip ファイルを作成しています...","download_submissions_title":"課題提出物のダウンロード","finished_redirecting":"完了しました!ファイルにリダイレクトしています...","gathering_files":"ファイルを収集しています (%{progress})...","gathering_files_progress":"ファイルを収集しています (%{progress})...","see_attached_files":"添付ファイルを参照してください"}},"ko":{"submissions":{"creating_zip":"압축 파일을 만드는 중...","download_submissions_title":"과제 제출물 다운로드","finished_redirecting":"완료됨! 파일로 리디렉트 중...","gathering_files":"파일 수집 중 (%{progress})...","gathering_files_progress":"파일 수집 중 (%{progress})...","see_attached_files":"첨부 파일 보기"}},"mi":{"click_here_to_download_size_of_file_74443988":"Pāwhiri ki konei ki te tiki %{size_of_file}","download_assignment_submissions_41e50ee7":" Tikiake WHakataunga Tāpaetanga","excused_cf8792eb":"Whakawātea","submissions":{"creating_zip":"Te hanga kōnae kōtui ...","download_submissions_title":"tāpaetanga Tikiake whakataunga","finished_redirecting":"Kua oti te! Anō ki Kōnae ...","gathering_files":"Kohikohinga Kōnae (%{progress})...","gathering_files_progress":"Kohikohinga Kōnae (%{progress})...","see_attached_files":"Tirohia te kōnae piri"}},"nb":{"click_here_to_download_size_of_file_74443988":"Trykk her for å laste ned %{size_of_file}","download_assignment_submissions_41e50ee7":"Last ned leverte oppgaver","excused_cf8792eb":"Fritatt","submissions":{"creating_zip":"Lager zip-fil...","download_submissions_title":"Laster ned leverte oppgaver","finished_redirecting":"Ferdig! Omdirigerer til filen...","gathering_files":"Samler filer (%{progress})…","gathering_files_progress":"Samler filer (%{progress})…","see_attached_files":"Se vedlagte filer"}},"nb-x-k12":{"click_here_to_download_size_of_file_74443988":"Klikk her for å laste ned %{size_of_file}","download_assignment_submissions_41e50ee7":"Laster ned leverte oppgaver","excused_cf8792eb":"Fritatt","submissions":{"creating_zip":"Lager zip-fil...","download_submissions_title":"Laster ned leverte oppgaver","finished_redirecting":"Ferdig! Omdirigerer til filen...","gathering_files":"Samler filer (%{progress})…","gathering_files_progress":"Samler filer (%{progress})…","see_attached_files":"Se vedlagte filer"}},"nl":{"click_here_to_download_size_of_file_74443988":"Hier klikken om te downloaden %{size_of_file}","download_assignment_submissions_41e50ee7":"Ingezonden opdracht downloaden","excused_cf8792eb":"Geëxcuseerd!","submissions":{"creating_zip":"Bezig met maken van zip-bestand...","download_submissions_title":"Ingezonden opdracht downloaden","finished_redirecting":"Klaar! Bezig met doorsturen naar bestand...","gathering_files":"Bezig met verzamelen van bestanden (%{progress})...","gathering_files_progress":"Bezig met verzamelen van bestanden (%{progress})...","see_attached_files":"Bijgevoegde bestanden zien"}},"nn":{"click_here_to_download_size_of_file_74443988":"Klikk her for å laste ned %{size_of_file}","download_assignment_submissions_41e50ee7":"Last ned oppgåveinnleveringar","excused_cf8792eb":"Fritak er innvilga","submissions":{"creating_zip":"Opprettar ZIP-fil...","download_submissions_title":"Last ned oppgåveinnleveringar","finished_redirecting":"Fullført.  Omdirigerer til fil...","gathering_files":"Samlar filer (%{progress})...","gathering_files_progress":"Samlar filer (%{progress})...","see_attached_files":"Sjå vedlagde filer"}},"pl":{"click_here_to_download_size_of_file_74443988":"Kliknij tutaj, aby pobrać. %{size_of_file}","download_assignment_submissions_41e50ee7":"Pobierz przesłane zadania","excused_cf8792eb":"Usprawiedliwiony!","submissions":{"creating_zip":"Trwa tworzenie pliku .zip...","download_submissions_title":"Pobierz przesłane zadania","finished_redirecting":"Zakończono!  Trwa przekierowanie do pliku…","gathering_files":"Gromadzenie plików (%{progress})...","gathering_files_progress":"Gromadzenie plików (%{progress})...","see_attached_files":"Zobacz dołączone pliki"}},"pt":{"click_here_to_download_size_of_file_74443988":"Clique aqui para descarregar %{size_of_file}","download_assignment_submissions_41e50ee7":"Descarregar envios de tarefas","excused_cf8792eb":"Desculpado","submissions":{"creating_zip":"Criando arquivo zip...","download_submissions_title":"Descarregar envios de tarefas","finished_redirecting":"finalizado  Redirecionando para o arquivo...","gathering_files":"A reunir os ficheiros (%{progress})...","gathering_files_progress":"A reunir os ficheiros (%{progress})...","see_attached_files":"Consultar arquivos anexos"}},"pt-BR":{"click_here_to_download_size_of_file_74443988":"Clique aqui para baixar %{size_of_file}","download_assignment_submissions_41e50ee7":"Baixar envios de tarefas","excused_cf8792eb":"Dispensado","submissions":{"creating_zip":"Criando arquivo zip...","download_submissions_title":"Baixar envios de tarefas","finished_redirecting":"Concluído!  Redirecionando para o arquivo...","gathering_files":"Reunindo arquivos (%{progress})...","gathering_files_progress":"Reunindo arquivos (%{progress})...","see_attached_files":"Consultar arquivos anexos"}},"ru":{"click_here_to_download_size_of_file_74443988":"Щелкните здесь, чтобы скачать %{size_of_file}","download_assignment_submissions_41e50ee7":"Скачать отправки заданий","excused_cf8792eb":"По уважительной причине","submissions":{"creating_zip":"Создание ZIP-файла...","download_submissions_title":"Скачать отправки заданий","finished_redirecting":"Завершено!  Перенаправление к файлу...","gathering_files":"Сбор файлов (%{progress})...","gathering_files_progress":"Сбор файлов (%{progress})...","see_attached_files":"Смотрите приложенные файлы"}},"sl":{"click_here_to_download_size_of_file_74443988":"Za prenos kliknite tukaj %{size_of_file}","download_assignment_submissions_41e50ee7":"Prenesi oddaje nalog","excused_cf8792eb":"Opravičeno","submissions":{"creating_zip":"Ustvarjanje datoteke .zip ...","download_submissions_title":"Prenesi oddaje nalog","finished_redirecting":"Dokončano.  Preusmerjanje na datoteko ...","gathering_files":"Zbiranje datotek (%{progress}) ...","gathering_files_progress":"Zbiranje datotek (%{progress}) ...","see_attached_files":"Glejte dodane datoteke."}},"sv":{"click_here_to_download_size_of_file_74443988":"Klicka här för att ladda ner %{size_of_file}","download_assignment_submissions_41e50ee7":"Ladda ner uppgiftsinlämningar","excused_cf8792eb":"Ursäktad","submissions":{"creating_zip":"Skapar zipfil ...","download_submissions_title":"Ladda ner uppgiftsinlämningar","finished_redirecting":"Färdig!  Omdirigerar till fil ...","gathering_files":"Hämtar filer (%{progress}) ...","gathering_files_progress":"Hämtar filer (%{progress}) ...","see_attached_files":"Se bifogade filer"}},"sv-x-k12":{"click_here_to_download_size_of_file_74443988":"Klicka här för att ladda ner %{size_of_file}","download_assignment_submissions_41e50ee7":"Ladda ner uppgiftsinlämningar","excused_cf8792eb":"Ursäktad","submissions":{"creating_zip":"Skapar zipfil ...","download_submissions_title":"Ladda ner uppgiftsinlämningar","finished_redirecting":"Färdig!  Omdirigerar till fil ...","gathering_files":"Hämtar filer (%{progress}) ...","gathering_files_progress":"Hämtar filer (%{progress}) ...","see_attached_files":"Se bifogade filer"}},"tr":{"click_here_to_download_size_of_file_74443988":"İndirmek için tıklayın %{size_of_file}","download_assignment_submissions_41e50ee7":"Gönderilen Ödevleri İndir","excused_cf8792eb":"Mazeretli","submissions":{"creating_zip":"zip dosyası oluşturuluyor...","download_submissions_title":"Gönderilen Ödevleri İndir","finished_redirecting":"Tamamlandı! Dosyasına Yönlendiriliyor...","gathering_files":"Dosyalar Toplanıyor (%{progress}%)...","gathering_files_progress":"Dosyalar Toplanıyor (%{progress}%)...","see_attached_files":"Ekli dosyalara bakın"}},"uk":{"click_here_to_download_size_of_file_74443988":"Натисніть тут для завантаження%{size_of_file}","download_assignment_submissions_41e50ee7":"Завантажити подання завдання","excused_cf8792eb":"Виправдано","submissions":{"creating_zip":"Створюється zip-архів...","download_submissions_title":"Завантажити відправлені завдання","finished_redirecting":"Готово! Перенаправлення до файлу ...","gathering_files":"Збір файлів (%{progress})...","gathering_files_progress":"Збір файлів (%{progress})...","see_attached_files":"Передивитись прикріплені файли"}},"zh-Hans":{"click_here_to_download_size_of_file_74443988":"单击此处下载%{size_of_file}","download_assignment_submissions_41e50ee7":"下载作业提交项","excused_cf8792eb":"已免除","submissions":{"creating_zip":"正在创建 zip 文件...","download_submissions_title":"下载作业提交文件","finished_redirecting":"已完成！正在重定向至文件...","gathering_files":"正在收集文件 (%{progress})...","gathering_files_progress":"正在收集文件 (%{progress})...","see_attached_files":"查看附件文件"}},"zh-Hant":{"click_here_to_download_size_of_file_74443988":"按下此處下載%{size_of_file}","download_assignment_submissions_41e50ee7":"下載作業提交項目","excused_cf8792eb":"已免除","submissions":{"creating_zip":"正在創建 zip 文檔...","download_submissions_title":"下載作業提交件","finished_redirecting":"已完成！重定向到文檔...","gathering_files":"正在收集文檔 (%{progress})...","gathering_files_progress":"正在收集文檔 (%{progress})...","see_attached_files":"見所附文檔"}}}'))
+t("jQeR")
+t("0sPK")
+i["a"]=n["default"].scoped("submissions")}}])
+
+//# sourceMappingURL=submissions-c-224a9033b9.js.map
