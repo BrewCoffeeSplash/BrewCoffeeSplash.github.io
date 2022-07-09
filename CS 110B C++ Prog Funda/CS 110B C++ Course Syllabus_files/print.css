@@ -1,0 +1,254 @@
+/* andreas09 v1.0 (Dec 10th 2005) - An open source template by Andreas Viklund - http://andreasviklund.com. Free to use for any purpose as long as the proper credits are given to the original author. */
+
+body {
+background:#ffffff;
+color:#303030;
+font:86% Verdana,Tahoma,Arial,sans-serif;
+margin:0;
+padding:0;
+text-align:center;
+line-height: 1.5;
+}
+
+a {
+color:#505050;
+font-weight:bold;
+text-decoration:none;
+}
+
+a:hover {
+color:#808080;
+text-decoration:underline;
+}
+
+p {
+/* line-height:1.5em;  I put this in body instead */
+margin:0 0 15px;
+}
+
+/*** Main container ***/
+
+#container {
+background:#f0f0f0 url(img/bodybg.jpg) repeat-x;
+color:#303030;
+margin:0;
+min-width:770px;
+padding:0;
+text-align:left;
+width:100%;
+}
+
+/*** Header section ***/
+
+#sitename {
+color:#000000;
+height:92px;
+margin:0 20px 10px;
+text-align:left;
+}
+
+#sitename h1,#sitename h2 {
+font-weight:400;
+letter-spacing:-2px;
+margin:0;
+padding:0;
+}
+
+#sitename h1 {
+font-size:2.4em;
+padding-top:20px;
+}
+
+#sitename h2 {
+font-size:1.6em;
+}
+
+/*** Horizontal menu ***/
+
+
+#mainmenu {
+	display: none;
+}
+
+
+
+
+/*** Content wrap ***/
+
+#wrap {
+clear:both;
+font-size:0.9em;
+padding:0;
+}
+
+/*** Sidebars ***/
+
+#rightside {
+	display: none;
+}
+
+
+
+/*** Content ***/
+
+#content,#contentalt {
+background-color:#fafcff;
+border:1px solid #909090;
+color:#2a2a2a;
+padding:15px 20px 5px;
+}
+
+#content {margin:0 0;}
+#contentalt {margin:0 20px 0 20px;}
+
+#content h1,#content h2,#contentalt h1,#contentalt h2 {
+background-color:inherit;
+color:#606060;
+font-size:1.8em;
+font-weight:bold;
+letter-spacing:-1px;
+margin:0 0 15px;
+padding:0;
+}
+
+#content h2,#contentalt h2 {
+font-size:1.6em;
+margin-bottom:10px;
+}
+
+#content img,#contentalt img {
+border:1px solid #b0b0b0;
+float:left;
+margin:5px 15px 6px;
+padding:5px;
+}
+
+/*** Footer ***/
+
+#footer {
+background:#8b8b8b url(img/footerbg.jpg) top left repeat-x;
+clear:both;
+color:#d0d0d0;
+font-size:0.9em;
+font-weight:bold;
+margin:0;
+padding:20px 0;
+text-align:center;
+width:100%;
+height: 50px;
+}
+
+#footer a {
+color:#d0d0d0;
+font-weight:bold;
+}
+
+/*** Various classes ***/
+
+.thumbnail {
+background:#fafbfc;
+border:1px solid #b0b0b0;
+margin:0 0 10px 10px;
+padding:5px;
+}
+
+
+.clearingdiv {
+clear:both;
+height:30px;
+width:1px;
+}
+
+.hide {display:none;}
+
+/*** Text format ***/
+
+.intro {
+font-size:1.1em;
+font-weight:bold;
+letter-spacing:-1px;
+}
+
+.small {font-size:0.8em;}
+.large {font-size:1.4em;}
+.center {text-align:center;}
+.right {text-align:right;}
+.keyword {font-family: monospace; font-size: 1.2em;}
+
+
+/********  Additions for CS115 ********/
+/* this is for images floating along the right... */
+
+.filler {float: right; margin: 0px 60px 0px 10px; }
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+td {
+    border: dotted thin black;
+    padding: 4px;
+}
+
+ol.sublist {
+    list-style-type: lower-alpha;
+}
+
+pre {
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+
+#lab9graphic {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#clearboth {
+    clear: both;
+}
+
+
+
+
+/********   Additions for homepage **********/
+
+
+#contact {
+    border: 1px dotted gray;
+    background-color: #d0d0d0;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+    padding: 15px;
+}
+
+/*********    Additions for CS 10 ***********/
+
+.divider {
+	border-bottom: 1px black solid;
+}
+
+.standout {
+	border: 1px black inset;
+	padding: 10px;
+}
+
+div.standout {
+	margin-bottom: 15px;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.noprint {
+	display: none;
+}
+
+/*** End of file ***/
