@@ -1,0 +1,566 @@
+(function() {
+  if (window.location.toString().search(/(gradebook)/) !== -1) {
+    setTimeout(prontoChatClient, 2000);
+  } else {
+    setTimeout(prontoChatClient, 500);
+  }
+  
+  function prontoChatClient() {
+    if (window.prontoInit) {
+      if (window.prontoInit.hasOwnProperty('canvas') ) {
+        var pronto_subaccount_id = window.prontoInit.canvas.accountid;
+      } else {
+        var pronto_subaccount_id = "";
+      }
+    } else {
+      var pronto_subaccount_id = "";
+    }
+  
+    if (isMobileDevice()) {
+      return;
+    }
+  
+    if (isOnQuizPage()) {
+      return;
+    }
+  
+    if(sessionStorage.getItem('pronto_session_host')) {
+      var pronto_domain = sessionStorage.getItem('pronto_session_host');
+    } else {
+      var pronto_domain = 'chat.trypronto.com';
+    }
+  
+    var pronto_enabled = false;
+    var pronto_init = false;
+    var pronto_external_user_id = null;
+  
+    var original_widget_urls = [
+      'https://rowan.instructure.com',
+    ]
+  
+    if (original_widget_urls.includes(window.parent.location.origin)) {
+      var pronto_sidebar_flag = false;
+    } else {
+      var pronto_sidebar_flag = true;
+    }
+  
+    //For Canvas - Make call to check if user is a pronto_enabled user
+    var pronto_custom_data_Http = new XMLHttpRequest();
+    var pronto_custom_data_url = window.parent.location.origin + '/api/v1/users/self/custom_data/pronto_enabled?ns=com.trypronto.canvas-app';
+    pronto_custom_data_Http.open("GET", pronto_custom_data_url, false);
+    pronto_custom_data_Http.send();
+  
+    var pronto_custom_data_json = pronto_custom_data_Http.responseText.replace('while(1);', '');
+    var pronto_custom_data_response = JSON.parse(pronto_custom_data_json);
+    if (pronto_custom_data_response.data && pronto_custom_data_response.data === 'true') {
+      pronto_enabled = true;
+    }
+  
+    //For Canvas - Get the current canvas user object
+    var pronto_custom_data_Http_user = new XMLHttpRequest();
+    var pronto_custom_data_url_user = window.parent.location.origin + '/api/v1/users/self?ns=com.trypronto.canvas-app';
+    pronto_custom_data_Http_user.open("GET", pronto_custom_data_url_user, false);
+    pronto_custom_data_Http_user.send();
+  
+    var pronto_custom_data_json_user = pronto_custom_data_Http_user.responseText.replace('while(1);', '');
+    var pronto_custom_data_response_user = JSON.parse(pronto_custom_data_json_user);
+    if (pronto_custom_data_response_user.id) {
+      pronto_external_user_id = pronto_custom_data_response_user.id;
+    }
+  
+    if (pronto_enabled) {
+      var sessionTimeout = setTimeout(expireSession, 21600000);
+    }
+  
+    var pronto_session_key = sessionStorage.getItem('pronto_session_key');
+    var pronto_canvas_course = "";
+    var pronto_canvas_group = "";
+  
+    // check for a Canvas course and set it
+    if (typeof window.ENV !== "undefined") {
+      if (typeof window.ENV.COURSE_ID !== "undefined") {
+        pronto_canvas_course = window.ENV.COURSE_ID;
+      } else if (typeof window.ENV.COURSE !== "undefined") {
+        pronto_canvas_course = window.ENV.COURSE.id;
+      } else if (typeof window.ENV.group !== "undefined") {
+        pronto_canvas_group = window.ENV.group.id;
+      }
+    }
+  
+    // add our font
+    var pronto_font_head = document.getElementsByTagName('head')[0];
+    var pronto_font_style = document.createElement('link');
+    pronto_font_style.href = 'https://fonts.googleapis.com/css?family=Muli:700,900';
+    pronto_font_style.type = 'text/css';
+    pronto_font_style.rel = 'stylesheet';
+    pronto_font_head.append(pronto_font_style);
+  
+    // add our css file
+    var pronto_css_head = document.getElementsByTagName('head')[0];
+    var pronto_css_style = document.createElement('link');
+    pronto_css_style.href = 'https://'+ pronto_domain +'/css/embedded.css?cb='+ Math.round(new Date().getTime() / 1000);
+    pronto_css_style.type = 'text/css';
+    pronto_css_style.rel = 'stylesheet';
+    pronto_css_head.append(pronto_css_style);
+  
+    // show/hide chat based on pronto_enabled var
+    if (pronto_enabled) {
+      var pronto_iframe_master_opacity = 1;
+      var pronto_iframe_master_pointer = "unset";
+    } else {
+      var pronto_iframe_master_opacity = 0;
+      var pronto_iframe_master_pointer = "none";
+    }
+  
+    if (isSafari()) {
+      var pronto_iframe_master_z_index = " z-index: -1;";
+    } else {
+      var pronto_iframe_master_z_index = "";
+    }
+  
+    // Pronto button to insert into Canvas' menu
+    var pronto_button = `<li class="menu-item ic-app-header__menu-list-item iframe_toggle pronto_iframe_toggle in-sidebar" style="position: relative">
+      <a id="global_nav_pronto_link" role="button" href="#" class="ic-app-header__menu-list-link">
+        <div class="menu-item-icon-container">
+          <svg class="pronto-logo ic-icon-svg" viewBox="0 0 35 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path d="M23.5812595,16.5351994 C21.7672641,16.5351994 20.2736257,15.1681322 20.0478115,13.4002782 L17.7570217,13.4002782 C17.5407298,14.5985209 16.5034808,15.5071539 15.2533408,15.5071539 C14.0038809,15.5071539 12.966632,14.5985209 12.7496599,13.4002782 L10.4262223,13.4002782 C10.2214932,14.1888125 9.51752421,14.7728357 8.67276146,14.7728357 C7.66816036,14.7728357 6.8533248,13.9506738 6.8533248,12.9370401 C6.8533248,11.9234064 7.66816036,11.1012445 8.67276146,11.1012445 C9.51752421,11.1012445 10.2214932,11.685954 10.4262223,12.473802 L12.7496599,12.473802 C12.966632,11.2755593 14.0038809,10.3669263 15.2533408,10.3669263 C16.5034808,10.3669263 17.5407298,11.2755593 17.7570217,12.473802 L20.0478115,12.473802 C20.2736257,10.705948 21.7672641,9.33888079 23.5812595,9.33888079 C25.5510122,9.33888079 27.1466752,10.9502632 27.1466752,12.9370401 C27.1466752,14.9245033 25.5510122,16.5351994 23.5812595,16.5351994 M17,0 C7.61170681,0 0,5.79219238 0,12.9370401 C0,17.4822641 3.0824998,21.4770925 7.74025766,23.7843615 L7.74025766,28.4057624 C7.74025766,29.202532 8.71289109,29.5799853 9.24205809,28.9897856 L12.4585501,25.4039793 C13.9045771,25.7080008 15.4267824,25.8740802 17,25.8740802 C26.3889734,25.8740802 34,20.0818878 34,12.9370401 C34,5.79219238 26.3889734,0 17,0"></path>
+          </svg>
+          <span class="menu-item__badge">
+            <span class="pronto-sidebar-count" aria-hidden="true"></span>
+          </span>
+        </div>
+        <div class="menu-item__text">
+          Pronto
+        </div>
+      </a>
+    </li>`;
+  
+    // build our chat window variable
+    var pronto_chat_window_floating = `
+      <div class="iframe_toggle pronto-iframe-toggle pronto-iframe-toggle-collapsed scale-in-ver-bottom" style="opacity: ${pronto_iframe_master_opacity}; pointerEvents: ${pronto_iframe_master_pointer};">
+        <div class="pronto-iframe-toggle-container">
+          <div class="pronto-expand-toggle-wrapper">
+            <img class="pronto-expand-toggle-logo" src="https://${pronto_domain}/images/pronto/Pronto-Mark-Secondary-White.svg" alt="pronto logo"/>
+            <img class="pronto-expand-toggle-x" src="https://${pronto_domain}/images/pronto/ic-cross.png" alt="close"/>
+          </div>
+        </div>
+        <svg class="pronto-iframe-toggle-container-alertbadge pronto-alert-badge-leave" width="18px" height="18px" viewBox="0 0 67 67" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Group-6">
+                    <circle id="Oval" fill="#FFFFFF" cx="33.5" cy="33.5" r="33.5"></circle>
+                    <circle id="InnerOval" fill="#D0021B" cx="34" cy="34" r="25"></circle>
+                </g>
+            </g>
+        </svg>
+      </div>
+      <div class="pronto-new-message" style="opacity: 0; transition: opacity .5s linear"></div>
+      <iframe class="pronto-chat-iframe mini-window" src="https://${pronto_domain}/wrapper/manager?wrapper=1&session_key=${ pronto_session_key !== null ? pronto_session_key : '' }" frameborder="0" style="opacity: 0; transition: opacity .5s linear;${pronto_iframe_master_z_index}"></iframe>
+    `;
+  
+  
+    var pronto_chat_window_sidebar = `
+      <div class="pronto-new-message in-sidebar" style="opacity: 0; transition: opacity .5s linear"></div>
+      <iframe class="pronto-chat-iframe mini-window in-sidebar" src="https://${pronto_domain}/wrapper/manager?wrapper=1&session_key=${ pronto_session_key !== null ? pronto_session_key : '' }" frameborder="0" style="opacity: 0; transition: opacity .5s linear;${pronto_iframe_master_z_index}"></iframe>
+    `;
+  
+  
+    // insert our chat window into the page, unless at the login screen or theme editor.
+    if(window.location.toString().search(/\/login/) > -1) {
+      // clear our storage because we're at the login page
+      sessionStorage.removeItem('pronto_session_key');
+      var pronto_logout = `<iframe class="pronto-logout" src="https://${pronto_domain}/user/logout" frameborder="0" style="opacity: 0;"></iframe>`
+      document.body.insertAdjacentHTML('beforeend', pronto_logout);
+      return;
+    } else {
+      // show a simple placeholder to let the user know that the wrapper was properly setup and incorporated into their theme
+      if (window.location.toString().search(/theme_editor/) > -1) {
+          var pronto_enabled_alert_template = `
+          <div class="pronto-enabled-alert" style="opacity: 0; transition: opacity 1s linear">Pronto has been enabled in the menu on the left.</div>`;
+  
+          document.body.insertAdjacentHTML('beforeend', pronto_enabled_alert_template);
+  
+          window.setTimeout(function() {
+            showEnableSuccessAndFade();
+          }, 500);
+      } else {
+        if (pronto_enabled) {
+          if ((!window.parent.document.querySelector('.pronto-iframe-toggle') || !document.querySelector('.pronto-iframe-toggle')) && (!window.parent.document.querySelector('.pronto-new-message') || !document.querySelector('.pronto-new-message')) && (!window.parent.document.querySelector('.pronto-chat-iframe') || document.querySelector('.pronto-chat-iframe'))) {
+            if (pronto_sidebar_flag) {
+              document.body.insertAdjacentHTML('beforeend', pronto_chat_window_sidebar);
+              document.querySelector('#menu').insertAdjacentHTML('beforeend', pronto_button);
+            } else {
+              document.body.insertAdjacentHTML('beforeend', pronto_chat_window_floating);
+              if (document.querySelector('#dashboard')) {
+                adjustForDashboard();
+              }
+            }
+  
+          };
+        } else {
+          return;
+        }
+      }
+    }
+  
+    var pronto_iframe = document.getElementsByClassName('pronto-chat-iframe')[0];
+    var pronto_iframe_toggle = document.getElementsByClassName('iframe_toggle')[0];
+  
+    if (!pronto_sidebar_flag) {
+      var pronto_expand_toggle_logo = document.getElementsByClassName('pronto-expand-toggle-logo')[0];
+      var pronto_expand_toggle_x = document.getElementsByClassName('pronto-expand-toggle-x')[0];
+    }
+  
+    var pronto_new_message = document.querySelector(".pronto-new-message");
+    var pronto_expand_toggle_wrapper = document.getElementsByClassName('pronto-expand-toggle-wrapper')[0];
+  
+    var pronto_new_message_group_id;
+    var prontoMessageFadeTimeout;
+    var pronto_group_name;
+    var pronto_user_authenticated = true;
+  
+    // message handler
+    window.addEventListener('message', (e) => {
+      var pronto_message_data = e.data;
+      switch (pronto_message_data.type) {
+        case 'groupUpdate':
+          if (pronto_message_data.unread > 0) {
+            if (!pronto_sidebar_flag) {
+              var pronto_alert_badge = document.getElementsByClassName('pronto-iframe-toggle-container-alertbadge')[0];
+              if (pronto_alert_badge.classList.contains('pronto-alert-badge-leave')) {
+                pronto_alert_badge.classList.remove('pronto-alert-badge-leave');
+              }
+              pronto_alert_badge.classList.add('pronto-alert-badge-enter');
+  
+            } else {
+              updateSidebarBadge(pronto_message_data.unread);
+            }
+          } else {
+            if (!pronto_sidebar_flag) {
+              var pronto_alert_badge = document.getElementsByClassName('pronto-iframe-toggle-container-alertbadge')[0];
+              if (pronto_alert_badge.classList.contains('pronto-alert-badge-enter')) {
+                pronto_alert_badge.classList.remove('pronto-alert-badge-enter');
+              }
+              pronto_alert_badge.classList.add('pronto-alert-badge-leave');
+  
+            } else {
+              updateSidebarBadge(0);
+            }
+          }
+          break;
+  
+        case 'unreadUpdate':
+          if (pronto_message_data.unread > 0) {
+            if (!pronto_sidebar_flag) {
+              var pronto_alert_badge = document.getElementsByClassName('pronto-iframe-toggle-container-alertbadge')[0];
+              // alert_badge.textContent = data.unread;
+              if (pronto_alert_badge.classList.contains('pronto-alert-badge-leave')) {
+                pronto_alert_badge.classList.remove('pronto-alert-badge-leave');
+              }
+              pronto_alert_badge.classList.add('pronto-alert-badge-enter');
+  
+            } else {
+              updateSidebarBadge(pronto_message_data.unread);
+            }
+          } else {
+            if (!pronto_sidebar_flag) {
+              var pronto_alert_badge = document.getElementsByClassName('pronto-iframe-toggle-container-alertbadge')[0];
+              if (pronto_alert_badge.classList.contains('pronto-alert-badge-enter')) {
+                pronto_alert_badge.classList.remove('pronto-alert-badge-enter');
+              }
+              pronto_alert_badge.classList.add('pronto-alert-badge-leave');
+  
+            } else {
+              updateSidebarBadge(0);
+            }
+          }
+          break;
+  
+        case 'authenticated':
+          if (pronto_message_data.host) {
+            sessionStorage.setItem('pronto_session_host', pronto_message_data.host);
+            pronto_domain = pronto_message_data.host;
+          }
+  
+          if (!pronto_user_authenticated && pronto_enabled) {
+            //pronto_iframe.src = pronto_iframe.src;
+            //pronto_user_authenticated = true;
+            if (pronto_iframe.classList.contains('expanded')) {
+              pronto_iframe.src = `https://${pronto_domain}?wrapper=1&course=${pronto_canvas_course}&group=${pronto_canvas_group}&session_key=${ pronto_session_key !== null ? pronto_session_key : '' }`;
+            } else {
+              pronto_iframe.src = `https://${pronto_domain}/wrapper/manager?wrapper=1&session_key=${ pronto_session_key !== null ? pronto_session_key : '' }`;
+            }
+            let pronto_auth_iframe = document.getElementsByClassName('pronto-auth-iframe')[0];
+            if (pronto_auth_iframe) {
+              pronto_auth_iframe.parentNode.removeChild(pronto_auth_iframe);
+            }
+            pronto_user_authenticated = true;
+          }
+          postToIframe({ type: 'newInstanceUrl', instance_url: window.location.hostname, canvas_accountid: pronto_subaccount_id });
+  
+          break;
+  
+        case 'notAuthenticated':
+          if (pronto_enabled) {
+            postToIframe({ type: 'authenticating' });
+            pronto_user_authenticated = false;
+            var pronto_window_origin = window.parent.location.origin;
+  
+            if (pronto_subaccount_id) {
+              var pronto_auth_window = `<iframe class="pronto-auth-iframe" src="${pronto_window_origin}/accounts/${pronto_subaccount_id}/external_tools/retrieve?url=https://canvas.ixn.pronto.io/connect&amp;launch_type=global_navigation&amp;display=borderless" frameborder="0"></iframe>`;
+            } else {
+              var pronto_auth_window = `<iframe class="pronto-auth-iframe" src="${pronto_window_origin}/accounts/self/external_tools/retrieve?url=https://canvas.ixn.pronto.io/connect&amp;launch_type=global_navigation&amp;display=borderless" frameborder="0"></iframe>`;
+            }
+            
+            if (!document.getElementsByClassName('pronto-auth-iframe')[0]) {
+              document.body.insertAdjacentHTML('beforeend', pronto_auth_window);
+            }
+            setTimeout(checkAuthIframe, 250);
+          }
+          break;
+  
+        case 'fullScreen':
+          pronto_iframe.classList.remove('mini-window');
+          pronto_iframe.classList.add('full-window');
+          pronto_iframe_toggle.style.opacity = 0;
+          break;
+  
+        case 'shrinkScreen':
+          pronto_iframe.classList.remove('full-window');
+          pronto_iframe.classList.add('mini-window');
+          pronto_iframe_toggle.style.opacity = 1;
+          break;
+  
+        case 'newMessage':
+          if (!pronto_iframe.classList.contains('expanded')) {
+            pronto_group_name = pronto_message_data.messageData.title;
+            pronto_new_message.innerHTML = createNewMessage(pronto_message_data.messageData);
+  
+            pronto_new_message_group_id = pronto_message_data.messageData.bubble_id;
+            startMessageAndFade();
+            pronto_new_message.style.pointerEvents = 'all';
+          } else {
+            postToIframe({ type: 'focusEmbedded', group_id: pronto_new_message_group_id });
+          }
+          break;
+  
+        case 'setSessionKey':
+          sessionStorage.setItem('pronto_session_key', pronto_message_data.session_key);
+          pronto_session_key = pronto_message_data.session_key;
+          break;
+  
+        case 'closeWrapper':
+          toggleCollapse();
+          break;
+      }
+  
+    });
+  
+    pronto_new_message.addEventListener('click', function() {
+      postToIframe({ type: 'loadNewGroupFromMessage', group_id: pronto_new_message_group_id });
+      toggleCollapse();
+    });
+  
+    // var mousePosition;
+    // var startingPosition = {};
+    // var offset;
+    var isDown = false;
+    var isDragging = false;
+  
+    pronto_iframe_toggle.addEventListener('mouseup', function() {
+      isDown = false;
+  
+      if (!isDragging) {
+        toggleCollapse();
+      }
+    });
+  
+    function updateSidebarBadge(num) {
+      var pronto_sidebar_count = document.querySelector(".pronto-sidebar-count");
+  
+      if (num > 0) {
+        pronto_sidebar_count.innerText = num;
+      } else {
+        pronto_sidebar_count.innerText = '';
+      }
+    }
+  
+    // Check to see if the auth crapped out and ended up on the login page for Canvas
+    function checkAuthIframe() {
+      let pronto_auth_iframe = document.getElementsByClassName('pronto-auth-iframe')[0];
+      if (pronto_auth_iframe) {
+        if (pronto_auth_iframe.src.indexOf("/login") > -1) {
+          postToIframe({ type: 'authError' });
+        } else {
+          setTimeout(checkAuthIframe, 500);
+        }
+      }
+    }
+  
+    function adjustForDashboard() {
+      document.querySelector('.pronto-iframe-toggle').style.bottom = '55px';
+      document.querySelector('.mini-window').style.bottom = '55px';
+      document.querySelector('.pronto-new-message').style.bottom = '98px';
+    }
+  
+    // handler to show/fade message notification
+    function startMessageAndFade() {
+      if (!pronto_sidebar_flag) {
+        pronto_new_message.style.transform = 'translateY(-15px)';
+      }
+  
+      pronto_new_message.style.transition = 'opacity .5s, transform 0.15s ease-out';
+      pronto_new_message.style.opacity = 1;
+      pronto_new_message.setAttribute('aria-hidden', 'false');
+  
+      clearTimeout(prontoMessageFadeTimeout);
+  
+      prontoMessageFadeTimeout = setTimeout(function() {
+        pronto_new_message.style.opacity = 0;
+        pronto_new_message.style.pointerEvents = 'none';
+        pronto_new_message.style.transform = 'none';
+        pronto_new_message.style.transition = 'visibility 0s 0.1s, opacity 0.25s, transform 0.15s ease-in';
+        pronto_new_message.setAttribute('aria-hidden', 'true');
+      }, 5000);
+    }
+  
+    // handler to show/fade pronto integration success notification
+    function showEnableSuccessAndFade() {
+      var pronto_enabled_alert = document.querySelector(".pronto-enabled-alert");
+      pronto_enabled_alert.style.opacity = 1;
+  
+      window.setTimeout(function() {
+        pronto_enabled_alert.style.opacity = 0;
+      }, 5000);
+    }
+  
+    // create a new message alert
+    function createNewMessage(messageData) {
+      var pronto_new_message_profile;
+      var pronto_new_message_firstname = messageData.message.user.firstname
+      var pronto_new_message_lastname =  messageData.message.user.lastname
+  
+      var messagemedia = messageData.message.messagemedia;
+  
+      if (messagemedia.length > 0) {
+        messageData.alert = `Sent you a ${messagemedia[0].mediatype.toLowerCase()}`;
+      }
+  
+      if (messageData.message.user.profilepic) {
+        pronto_new_message_profile = `<img class="pronto-message-profile-pic" src='${messageData.message.user.profilepicurl}' />`;
+      } else {
+        pronto_new_message_profile = `<div class="pronto-message-missing-profile-pic">${prontoProfileName(pronto_new_message_firstname, pronto_new_message_lastname)}</div>`;
+      }
+  
+      return `${pronto_new_message_profile}
+        <div class="pronto-message-top-line">
+          <div class="pronto-message-name">${messageData.message.user.firstname} ${messageData.message.user.lastname}</div>
+          <div class="pronto-message-group-name">${pronto_group_name}</div>
+        </div>
+        <div class="pronto-message">${messageData.alert}</div>`;
+    }
+  
+    // function to get the users initials
+    function prontoProfileName(fname, lname) {
+      return `${fname.charAt(0)}${lname.charAt(0)}`;
+    }
+  
+    function isSafari() {
+      return (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) ? true : false;
+    }
+  
+    // if user is using a mobile device we will not enable the pronto chat
+    function isMobileDevice() {
+      return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+    }
+  
+    // if user is currently taking a quiz we will not enable the pronto chat
+    function isOnQuizPage() {
+      return window.location.toString().search(/(quizzes|assignments)/) !== -1;
+    }
+  
+    // handle open/closing (toggle) of the wrapper
+    function toggleCollapse() {
+      if (pronto_iframe.classList.contains('expanded')) {
+        pronto_iframe.setAttribute('aria-hidden', 'true');
+        pronto_iframe.classList.remove('expanded');
+        pronto_iframe.style.transform = 'none';
+        pronto_iframe.style.opacity = '0';
+        pronto_iframe.style.transition = 'visibility 0s 0.1s, opacity 0.15s, transform 0.1s ease-in';
+        pronto_iframe.style.pointerEvents = 'none';
+        postToIframe({ type: 'unFocused' });
+  
+        if (!pronto_sidebar_flag) {
+          pronto_expand_toggle_x.style.opacity = 0;
+          pronto_expand_toggle_logo.style.opacity = 1;
+          pronto_expand_toggle_x.classList.remove('pronto-rotate-x');
+          pronto_expand_toggle_logo.classList.remove('pronto-rotate-x');
+          pronto_iframe_toggle.classList.remove('pronto-iframe-toggle-expanded');
+          pronto_iframe_toggle.classList.add('pronto-iframe-toggle-collapsed');
+        }
+  
+        if (isSafari()) {
+          setTimeout(() => {
+            pronto_iframe.style.zIndex = '-1';
+          }, 200);
+        }
+        clearTimeout(sessionTimeout);
+        sessionTimeout = setTimeout(expireSession, 21600000);
+      } else {
+        if (!pronto_init) {
+          pronto_iframe.src = `https://${pronto_domain}?wrapper=1&course=${pronto_canvas_course}&group=${pronto_canvas_group}&session_key=${ pronto_session_key !== null ? pronto_session_key : '' }`;
+          pronto_init = true;
+        }
+        if (isSafari()) {
+          pronto_iframe.style.zIndex = '99999998';
+        }
+  
+        pronto_iframe.setAttribute('aria-hidden', 'false');
+        pronto_iframe.classList.add('expanded');
+        pronto_iframe.style.transform = 'translateY(-58px)';
+        pronto_iframe.style.opacity = '1';
+        pronto_iframe.style.transition = 'opacity .5s, transform 0.15s ease-out';
+  
+        if (!pronto_sidebar_flag) {
+          pronto_iframe_toggle.style.tranform = "none";
+        }
+  
+        pronto_iframe.style.pointerEvents = 'unset';
+        postToIframe({ type: 'inFocus', login_id: Number(pronto_external_user_id) });
+  
+        if (!pronto_sidebar_flag) {
+          pronto_iframe_toggle.style.transform = 'none';
+          pronto_expand_toggle_logo.style.opacity = 0;
+          pronto_expand_toggle_logo.classList.add('pronto-rotate-x');
+        }
+  
+        pronto_new_message.style.opacity = 0;
+  
+        if (!pronto_sidebar_flag) {
+          pronto_expand_toggle_x.style.opacity = 1;
+          pronto_expand_toggle_x.classList.add('pronto-rotate-x');
+        }
+  
+        pronto_new_message.style.pointerEvents = 'none';
+  
+        if (!pronto_sidebar_flag) {
+          pronto_iframe_toggle.classList.add('pronto-iframe-toggle-expanded');
+          pronto_iframe_toggle.classList.remove('pronto-iframe-toggle-collapsed');
+        }
+  
+        clearTimeout(sessionTimeout);
+        sessionTimeout = setTimeout(expireSession, 21600000);
+      }
+    }
+  
+    function postToIframe(msg) {
+      pronto_iframe.contentWindow.postMessage(msg, '*');
+    }
+  
+    function expireSession() {
+      sessionStorage.removeItem('pronto_session_key');
+      postToIframe({ type: 'wrapperTimeout' });
+      pronto_session_key = null;
+      clearTimeout(sessionTimeout);
+    }
+  }
+}());
